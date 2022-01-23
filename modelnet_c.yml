@@ -1,4 +1,4 @@
-name: simpleview
+name: modelnetc
 channels:
   - defaults
 dependencies:
@@ -43,10 +43,8 @@ dependencies:
     - defusedxml==0.7.1
     - deprecation==2.1.0
     - docutils==0.17.1
-    - emd==0.0.0
     - entrypoints==0.3
     - enum34==1.1.10
-    - etw-pytorch-utils==1.1.1
     - future==0.18.2
     - h5py==2.10.0
     - idna==2.10
@@ -90,14 +88,12 @@ dependencies:
     - pexpect==4.8.0
     - pickleshare==0.7.5
     - pillow==8.3.1
-    - pointnet2-ops==3.0.0
     - progressbar2==3.50.0
     - prometheus-client==0.11.0
     - prompt-toolkit==3.0.19
     - protobuf==3.17.3
     - ptyprocess==0.7.0
     - pycparser==2.20
-    - pygem==2.0.0
     - pygments==2.9.0
     - pyparsing==2.4.7
     - pyrsistent==0.18.0

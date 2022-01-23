@@ -1,11 +1,6 @@
-This Codebase is based on SimpleView.
+**Benchmarking Robustness of 3D Point Cloud Recognition against Common Corruptions** <br>
 
-[**Revisiting Point Cloud Shape Classification with a Simple and Effective Baseline**](https://arxiv.org/pdf/2106.05304v1.pdf) <br>
-[Ankit Goyal](http://imankgoyal.github.io), [Hei Law](https://heilaw.github.io/), Bowei Liu, [Alejandro Newell](https://www.alejandronewell.com/), [Jia Deng](https://www.cs.princeton.edu/~jiadeng/) <br/>
-***International Conference on Machine Learning (ICML), 2021***
-
-
-If you find our work useful in your research, please consider citing:
+This Codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions:
 ```
 @article{goyal2021revisiting,
   title={Revisiting Point Cloud Shape Classification with a Simple and Effective Baseline},
@@ -17,10 +12,10 @@ If you find our work useful in your research, please consider citing:
 
 ## Getting Started
 
-First clone the repository. We would refer to the directory containing the code as `SimpleView`.
+First clone the repository. We would refer to the directory containing the code as `ModelNet40-C`.
 
 ```
-git clone git@github.com:princeton-vl/SimpleView.git
+git clone git@github.com:jiachens/ModelNet40-C.git
 ```
 
 #### Requirements
@@ -29,12 +24,12 @@ The code is tested on Linux OS with Python version **3.7.5**, CUDA version **10.
 #### Install Libraries
 We recommend you first install [Anaconda](https://anaconda.org/) and create a virtual environment.
 ```
-conda create --name simpleview python=3.7.5
+conda create --name modelnetc python=3.7.5
 ```
 
-Activate the virtual environment and install the libraries. Make sure you are in `SimpleView`.
+Activate the virtual environment and install the libraries. Make sure you are in `ModelNet40-C`.
 ```
-conda activate simpleview
+conda activate modelnetc
 pip install -r requirements.txt
 conda install sed  # for downloading data and pretrained models
 ```
@@ -43,9 +38,13 @@ For PointNet++, we need to install custom CUDA modules. Make sure you have acces
 ```
 cd pointnet2_pyt && pip install -e . && cd ..
 ```
+We also nned to install the earth mover distance module.
+```
+cd emd && python setup.py install && cd ..
+```
 
-#### Download Datasets and Pre-trained Models
-Make sure you are in `SimpleView`. `download.sh` script can be used for downloading all the data and the pretrained models. It also places them at the correct locations. First, use the following command to provide execute permission to the `download.sh` script. 
+#### Download Datasets Including ModelNet40-C and Pre-trained Models
+Make sure you are in `ModelNet40-C`. `download.sh` script can be used for downloading all the data and the pretrained models. It also places them at the correct locations. First, use the following command to provide execute permission to the `download.sh` script. 
 ```
 chmod +x download.sh
 ```
@@ -57,19 +56,23 @@ To download ModelNet40 execute the following command. This will download the Mod
 
 To download the pretrained models, execute the following command.
 ```
-./download.sh pretrained
+./download.sh cor_exp
+```
+To download the pretrained models using different data augmentation strategies, execute the following command.
+```
+./download.sh runs
 ```
 
-## Code Organization
-- `SimpleView/models`: Code for various models in PyTorch.
-- `SimpleView/configs`: Configuration files for various models.
-- `SimpleView/main.py`: Training and testing any models.
-- `SimpleView/configs.py`: Hyperparameters for different models and dataloader.
-- `SimpleView/dataloader.py`: Code for different variants of the dataloader.
-- `SimpleView/*_utils.py`: Code for various utility functions.
+## Code Organization In Originial SimpleView
+- `ModelNet40-C/models`: Code for various models in PyTorch.
+- `ModelNet40-C/configs`: Configuration files for various models.
+- `ModelNet40-C/main.py`: Training and testing any models.
+- `ModelNet40-C/configs.py`: Hyperparameters for different models and dataloader.
+- `ModelNet40-C/dataloader.py`: Code for different variants of the dataloader.
+- `ModelNet40-C/*_utils.py`: Code for various utility functions.
 
-## ScanObjectNN
-The code for our experiments on `ScanObjectNN` can be found in `ScanObjectNN/SimpleView` of this repo. Please refer to `README.md` in `ScanObjectNN/SimpleView` for more details.
+## New Features
+- `ModelNet40-C/models`: Code for various models in PyTorch.
  
 ## Running Experiments
 

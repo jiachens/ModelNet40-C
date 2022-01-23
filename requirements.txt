@@ -9,3 +9,4 @@ torch==1.4.0+cu100
 -f https://download.pytorch.org/whl/torch_stable.html
 torchvision==0.5.0+cu100
 yacs==0.1.6
+open3d==0.13.0
