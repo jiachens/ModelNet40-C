@@ -16,16 +16,25 @@ case $key in
 	pretrained)
 		wgetgdrive 1qSkMYYK1qkT4wMMeAXerSI2Q7AxWujsS tmp/pretrained.zip
 		unzip -o tmp/pretrained.zip
-    		;;
+		;;
 	runs)
-		python gdrivedl.py https://drive.google.com/drive/folders/1UT-OfAsQ1OGSa6HSLZcK6YyJeIkaJUfF?usp=sharing 
-    		;;
+		mkdir runs 
+		cd runs
+		python ../gdrivedl.py https://drive.google.com/drive/folders/1UT-OfAsQ1OGSa6HSLZcK6YyJeIkaJUfF?usp=sharing 
+    	cd ..
+		;;
 	cor_exp)
-		python gdrivedl.py https://drive.google.com/drive/folders/1iYcJwFCFm9JWSiL1puIVfjpEgNF2dSoy?usp=sharing 
-    		;;
+		mkdir cor_exp 
+		cd cor_exp
+		python ../gdrivedl.py https://drive.google.com/drive/folders/1iYcJwFCFm9JWSiL1puIVfjpEgNF2dSoy?usp=sharing 
+    	cd ..	
+		;;
 	modelnet40_c)
-		python gdrivedl.py https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing 
-    		;;
+		mkdir data/modelnet40_c
+		cd data/modelnet40_c
+		python ../../gdrivedl.py https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing 
+    	cd ../..
+		;;
 	modelnet40)
 		wget --no-check-certificate https://shapenet.cs.stanford.edu/media/modelnet40_ply_hdf5_2048.zip
 		unzip modelnet40_ply_hdf5_2048.zip
