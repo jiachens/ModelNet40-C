@@ -1,0 +1,3 @@
+[submodule "PyGeM"]
+	path = PyGeM
+	url = git@github.com:mathLab/PyGeM.git

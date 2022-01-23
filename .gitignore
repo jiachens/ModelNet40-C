@@ -6,7 +6,6 @@ runs/
 pretrained/
 cor_exp/
 *.out
-PyGeM
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,cuda,zsh,c++
