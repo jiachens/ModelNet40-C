@@ -1,6 +1,6 @@
 **Benchmarking Robustness of 3D Point Cloud Recognition against Common Corruptions** <br>
 
-![https://github.com/jiachens/ModelNet40-C/blob/master/examples_2.pdf]
+![image](https://github.com/jiachens/ModelNet40-C/blob/master/examples_2.pdf)
 
 NOTE: All the identifiable information in this codebase is not from the authors, but from the existing published papers or open-sourced projects.
 
