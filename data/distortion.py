@@ -1,15 +1,9 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-09 17:48:00
-LastEditors: Jiachen Sun
-LastEditTime: 2022-01-14 19:29:18
-'''
 import pygem
 from pygem import FFD, RBF, IDW
 import open3d as o3d
 import copy
 import numpy as np
+np.random.seed(2021)
 
 
 def core_distortion(points, n_control_points=[2,2,2], displacement=None):

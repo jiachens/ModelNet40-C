@@ -1,17 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-10 14:30:36
-LastEditors: Jiachen Sun
-LastEditTime: 2021-07-11 21:46:23
-'''
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-09 11:33:07
-LastEditors: Jiachen Sun
-LastEditTime: 2021-07-09 17:32:41
-'''
 import open3d as o3d
 import numpy as np
 import copy

@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-10 17:14:36
-LastEditors: Jiachen Sun
-LastEditTime: 2021-07-10 17:40:51
-'''
 import os
 
 SHAPE = ["airplane",

@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-05 15:19:04
-LastEditors: Jiachen Sun
-LastEditTime: 2022-01-22 17:02:52
-'''
 ###  Generate Various Common Corruptions ###
 from operator import index
 import os
