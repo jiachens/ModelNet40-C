@@ -63,6 +63,12 @@ To download the pretrained models using different data augmentation strategies, 
 ./download.sh runs
 ```
 
+## New Features
+- We include Point Cloud Transformer (PCT) in our benchmark
+- `ModelNet40-C/configs` contains config files to enable 
+- `ModelNet40-C/aug_utils.py` contains the 
+- `ModelNet40-C/third_party` contains the 
+
 ## Code Organization In Originial SimpleView
 - `ModelNet40-C/models`: Code for various models in PyTorch.
 - `ModelNet40-C/configs`: Configuration files for various models.
@@ -71,8 +77,6 @@ To download the pretrained models using different data augmentation strategies, 
 - `ModelNet40-C/dataloader.py`: Code for different variants of the dataloader.
 - `ModelNet40-C/*_utils.py`: Code for various utility functions.
 
-## New Features
-- `ModelNet40-C/models`: Code for various models in PyTorch.
  
 ## Running Experiments
 
