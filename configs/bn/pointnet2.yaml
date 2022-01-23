@@ -1,0 +1,14 @@
+DATALOADER:
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_c
+  EXP_ID: c_pointnet2_run_1
+  LOSS_NAME: smooth
+  MODEL_NAME: pointnet2
+  SEED: 1
+  TASK: cls
+TRAIN:
+  l2: 0.0
+ADAPT:
+  METHOD: bn

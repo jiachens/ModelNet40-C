@@ -1,0 +1,14 @@
+DATALOADER:
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_c
+  EXP_ID: c_pct_run_1
+  LOSS_NAME: smooth
+  MODEL_NAME: pct
+  SEED: 1
+  TASK: cls
+  OPTIMIZER: pct
+TRAIN:
+  l2: 1e-4
+  learning_rate: 0.0001

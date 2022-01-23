@@ -1,0 +1,14 @@
+DATALOADER:
+  batch_size: 18
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_dgcnn
+  EXP_ID: cutmix_k_simpleview_run_1
+  LOSS_NAME: smooth
+  MODEL_NAME: simpleview
+  SEED: 1
+  TASK: cls
+AUG:
+  NAME: cutmix_k
+  BETA: 1.
+  PROB: 0.5

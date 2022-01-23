@@ -1,0 +1,10 @@
+DATALOADER:
+  batch_size: 18
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_c
+  EXP_ID: c_simpleview_run_1
+  LOSS_NAME: smooth
+  MODEL_NAME: simpleview
+  SEED: 1
+  TASK: cls

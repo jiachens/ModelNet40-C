@@ -1,0 +1,12 @@
+DATALOADER:
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_rscnn
+  EXP_ID: rscnn_rscnn_run_1
+  LOSS_NAME: cross_entropy
+  MODEL_NAME: rscnn
+  SEED: 1
+  TASK: cls
+TRAIN:
+  l2: 0.0

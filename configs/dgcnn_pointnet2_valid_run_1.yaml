@@ -1,0 +1,19 @@
+DATALOADER:
+  MODELNET40_DGCNN:
+    train_data_path: ./data/modelnet40_ply_hdf5_2048/train_minus_valid_files.txt
+    valid_data_path: ./data/modelnet40_ply_hdf5_2048/valid_files.txt
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_dgcnn
+  EXP_ID: dgcnn_pointnet2_valid_run_1
+  LOSS_NAME: smooth
+  MODEL_NAME: pointnet2
+  SEED: 1
+  TASK: cls
+EXP_EXTRA:
+  no_test: true
+  no_val: false
+  val_eval_freq: 25
+TRAIN:
+  l2: 0.0

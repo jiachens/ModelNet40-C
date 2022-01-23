@@ -1,0 +1,12 @@
+DATALOADER:
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_dgcnn
+  EXP_ID: dgcnn_pointnet_run_1
+  LOSS_NAME: smooth
+  MODEL_NAME: pointnet
+  SEED: 1
+  TASK: cls_trans
+TRAIN:
+  l2: 0.0

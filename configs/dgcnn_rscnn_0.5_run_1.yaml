@@ -1,0 +1,14 @@
+DATALOADER:
+  MODELNET40_DGCNN:
+    train_data_path: ./data/modelnet40_ply_hdf5_2048/train_minus_valid_split_0.625_files.txt
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_dgcnn
+  EXP_ID: dgcnn_rscnn_0.5_run_1
+  LOSS_NAME: smooth
+  MODEL_NAME: rscnn
+  SEED: 1
+  TASK: cls
+TRAIN:
+  l2: 0.0

@@ -1,0 +1,18 @@
+DATALOADER:
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_dgcnn
+  EXP_ID: cutmix_k_pct_run_1
+  LOSS_NAME: smooth
+  MODEL_NAME: pct
+  SEED: 1
+  TASK: cls
+  OPTIMIZER: pct
+TRAIN:
+  l2: 1e-4
+  learning_rate: 0.0001
+AUG:
+  NAME: cutmix_k
+  BETA: 1.
+  PROB: 0.5

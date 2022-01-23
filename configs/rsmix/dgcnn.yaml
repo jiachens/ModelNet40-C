@@ -1,0 +1,17 @@
+DATALOADER:
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_dgcnn
+  EXP_ID: rsmix_dgcnn_run_1 
+  LOSS_NAME: smooth
+  MODEL_NAME: dgcnn
+  SEED: 1
+  METRIC: acc
+  TASK: cls
+TRAIN:
+  l2: 0.0
+AUG:
+  NAME: rsmix
+  BETA: 1.
+  PROB: 0.5

@@ -1,0 +1,13 @@
+DATALOADER:
+  batch_size: 32
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_dgcnn
+  EXP_ID: dgcnn_pointnet2_ce_run_1
+  LOSS_NAME: cross_entropy
+  METRIC: acc
+  MODEL_NAME: pointnet2
+  SEED: 1
+  TASK: cls
+TRAIN:
+  l2: 0.0
