@@ -104,11 +104,11 @@ python main.py --exp-config <path to the config>
 
 The config files are named as `<protocol>_<model_name><_extra>_run_<seed>.yaml` (`<protocol> ∈ [dgcnn, pointnet2, rscnn]`; `<model_name> ∈ [dgcnn, pointnet2, rscnn, pointnet, simpleview]` ). For example, the config file to run an experiment for PointNet++ in DGCNN protocol with seed 1 `dgcnn_pointnet2_run_1.yaml`. To run a new experiment with a different seed, you need to change the `SEED` parameter in the config file. All of our experiments are done based on seed 1.
 
-We additionally leverage PointCutMix: `configs/cutmix`, PointMixup: `configs/mixup`, RSMix: `configs/rsmix`, and PGD-based adversarial training `configs/pgd` as the training time config files.
+We additionally leverage PointCutMix: `configs/cutmix`, PointMixup: `configs/mixup`, RSMix: `configs/rsmix`, and PGD-based adversarial training `configs/pgd` as the training-time config files.
 
 
 #### Evaluate a pretrained model
-We provide pretrained models. They can be downloaded using the `./download cor_exp` and `./download runs` command and are stored in the `SimpleView/pretrained` folder. To test a pretrained model, the command is of the following format.
+We provide pretrained models. They can be downloaded using the `./download cor_exp` and `./download runs` commands and are stored in the `ModelNet40-C/runs` (for data augmentation recipes) and `ModelNet40-C/cor_exp` (for standard trained models) folders. To test a pretrained model, the command is of the following format.
 
 Additionally, we provide test-time config files in `configs/bn` and `configs/tent` for BN and TENT in our paper with the following commands:
 ```
