@@ -2,8 +2,6 @@
 
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/examples_2.pdf)
 
-NOTE: All the identifiable information in this codebase is not from the authors, but from the existing published papers or open-sourced projects.
-
 This Codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions:
 ```
 @article{goyal2021revisiting,
