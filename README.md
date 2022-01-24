@@ -58,10 +58,7 @@ python data/generate_c.py
 NOTE that the generation needs a monitor connected since Open3D library does not support background rendering. 
 
 #### Download Datasets Including ModelNet40-C and Pre-trained Models
-Make sure you are in `ModelNet40-C`. `download.sh` script can be used for downloading all the data and the pretrained models. It also places them at the correct locations. First, use the following command to provide execute permission to the `download.sh` script. 
-```
-chmod +x download.sh
-```
+Make sure you are in `ModelNet40-C`. `download.sh` script can be used for downloading all the data and the pretrained models. It also places them at the correct locations.
 We also allow users to download ModelNet40-C directly:
 ```
 ./download.sh modelnet40_c
