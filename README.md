@@ -117,3 +117,17 @@ python main.py --entry test --model-path <cor_exp/runs>/<cfg_name>/<model_name>.
 
 We list all the evaluation commands in the `eval_*.sh` script. Note that in `eval_cor.sh` it is expected that pgd with PointNet++, RSCNN, and SimpleView do not have outputs since they do not fit the adversarial training framework. We have mentioned this in our paper.
 
+## References
+
+[1] [Zhang, Jinlai, et al. "PointCutMix: Regularization Strategy for Point Cloud Classification." arXiv preprint arXiv:2101.01461 (2021).](https://arxiv.org/pdf/2101.01461.pdf)
+
+[2] [Chen, Yunlu, et al. "Pointmixup: Augmentation for point clouds." Computer Vision–ECCV 2020: 16th European Conference, Glasgow, UK, August 23–28, 2020, Proceedings, Part III 16. Springer International Publishing, 2020.](https://link.springer.com/content/pdf/10.1007/978-3-030-58580-8_20.pdf)
+
+[3] [Lee, Dogyoon, et al. "Regularization Strategy for Point Cloud via Rigidly Mixed Sample." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2021.](https://openaccess.thecvf.com/content/CVPR2021/papers/Lee_Regularization_Strategy_for_Point_Cloud_via_Rigidly_Mixed_Sample_CVPR_2021_paper.pdf)
+
+[4] [Sun, Jiachen, et al. "Adversarially Robust 3D Point Cloud Recognition Using Self-Supervisions." Advances in Neural Information Processing Systems 34 (2021).](https://proceedings.neurips.cc/paper/2021/file/82cadb0649a3af4968404c9f6031b233-Paper.pdf)
+
+[5] [Schneider, Steffen, et al. "Improving robustness against common corruptions by covariate shift adaptation." arXiv preprint arXiv:2006.16971 (2020).](https://arxiv.org/pdf/2006.16971.pdf)
+
+[6] [Wang, Dequan, et al. "Tent: Fully test-time adaptation by entropy minimization." arXiv preprint arXiv:2006.10726 (2020).](https://arxiv.org/pdf/2006.10726.pdf)
+
