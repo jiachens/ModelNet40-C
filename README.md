@@ -128,3 +128,14 @@ We list all the evaluation commands in the `eval_*.sh` script. Note that in `eva
 
 [6] [Wang, Dequan, et al. "Tent: Fully test-time adaptation by entropy minimization." arXiv preprint arXiv:2006.10726 (2020).](https://arxiv.org/pdf/2006.10726.pdf)
 
+[7] [Qi, Charles R., et al. "Pointnet: Deep learning on point sets for 3d classification and segmentation." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.](https://openaccess.thecvf.com/content_cvpr_2017/papers/Qi_PointNet_Deep_Learning_CVPR_2017_paper.pdf)
+
+[8] [Qi, Charles R., et al. "Pointnet++: Deep hierarchical feature learning on point sets in a metric space." arXiv preprint arXiv:1706.02413 (2017).](https://arxiv.org/pdf/1706.02413.pdf)
+
+[9] [Liu, Yongcheng, et al. "Relation-shape convolutional neural network for point cloud analysis." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2019.](https://openaccess.thecvf.com/content_CVPR_2019/papers/Liu_Relation-Shape_Convolutional_Neural_Network_for_Point_Cloud_Analysis_CVPR_2019_paper.pdf)
+
+[10] [Wang, Yue, et al. "Dynamic graph cnn for learning on point clouds." Acm Transactions On Graphics (tog) 38.5 (2019): 1-12.](https://dl.acm.org/doi/pdf/10.1145/3326362)
+
+[11] [Goyal, Ankit, et al. "Revisiting Point Cloud Shape Classification with a Simple and Effective Baseline." arXiv preprint arXiv:2106.05304 (2021).](https://arxiv.org/pdf/2106.05304.pdf)
+
+[12] [Guo, Meng-Hao, et al. "Pct: Point cloud transformer." Computational Visual Media 7.2 (2021): 187-199.](https://link.springer.com/content/pdf/10.1007/s41095-021-0229-5.pdf)
