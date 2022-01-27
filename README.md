@@ -2,8 +2,6 @@
 
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
 
-NOTE: All the identifiable information in this codebase is not from the authors, but from the existing published papers or open-sourced projects.
-
 This Codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions:
 ```
 @article{goyal2021revisiting,
@@ -19,7 +17,7 @@ This Codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleVie
 First clone the repository. We would refer to the directory containing the code as `ModelNet40-C`.
 
 ```
-git clone git@github.com:jiachens/ModelNet40-C.git
+git clone --recurse-submodules git@github.com:jiachens/ModelNet40-C.git
 ```
 
 #### Requirements
@@ -42,13 +40,17 @@ For PointNet++, we need to install custom CUDA modules. Make sure you have acces
 ```
 cd pointnet2_pyt && pip install -e . && cd ..
 ```
-We also nned to install the earth mover distance module.
+We also need to install pointnet2 operation library.
+```
+cd PCT_Pytorch/pointnet2_ops_lib && python setup.py install && cd -
+```
+We also need to install the earth mover distance module.
 ```
 cd emd && python setup.py install && cd ..
 ```
 We also need to install PyGem, since we it for the ModelNet40-C dataset generation.
 ```
-cd PyGem && python setup.py install && cd ..
+cd PyGeM && python setup.py install && cd ..
 ```
 
 To generate the ModelNet40-C dataset, please run:
@@ -105,7 +107,7 @@ We additionally leverage PointCutMix: `configs/cutmix`, PointMixup: `configs/mix
 
 
 #### Evaluate a pretrained model
-We provide pretrained models. They can be downloaded using the `./download cor_exp` and `./download runs` commands and are stored in the `ModelNet40-C/runs` (for data augmentation recipes) and `ModelNet40-C/cor_exp` (for standard trained models) folders. To test a pretrained model, the command is of the following format.
+We provide pretrained models. They can be downloaded using the `./download.sh cor_exp` and `./download.sh runs` commands and are stored in the `ModelNet40-C/runs` (for data augmentation recipes) and `ModelNet40-C/cor_exp` (for standard trained models) folders. To test a pretrained model, the command is of the following format.
 
 Additionally, we provide test-time config files in `configs/bn` and `configs/tent` for BN and TENT in our paper with the following commands:
 ```
