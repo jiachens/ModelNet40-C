@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-05 14:33:53
-LastEditors: Jiachen Sun
-LastEditTime: 2021-07-05 15:08:51
-'''
 import torch.nn as nn
 from PCT_Pytorch.model import Pct as Pct_original
 from all_utils import DATASET_NUM_CLASS

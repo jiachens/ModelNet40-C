@@ -1,11 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-18 23:00:31
-LastEditors: Jiachen Sun
-LastEditTime: 2022-01-15 12:18:53
-'''
-
 import numpy as np
 import torch
 import sys

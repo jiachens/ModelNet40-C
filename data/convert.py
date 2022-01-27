@@ -1,11 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-10 15:15:55
-LastEditors: Jiachen Sun
-LastEditTime: 2021-07-10 15:15:56
-'''
-
 import open3d as o3d
 
 

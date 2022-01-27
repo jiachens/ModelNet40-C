@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2021-07-05 13:47:31
-LastEditors: Jiachen Sun
-LastEditTime: 2022-01-15 22:12:39
-'''
 from yacs.config import CfgNode as CN
 
 _C = CN()
