@@ -12,6 +12,10 @@ This Codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleVie
 }
 ```
 
+## ModelNet40-C Leaderboard 
+
+Coming Soon ...
+
 ## Getting Started
 
 First clone the repository. We would refer to the directory containing the code as `ModelNet40-C`.
