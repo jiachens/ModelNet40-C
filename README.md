@@ -57,21 +57,22 @@ We also need to install PyGem, since we it for the ModelNet40-C dataset generati
 cd PyGeM && python setup.py install && cd ..
 ```
 
+#### Download Datasets Including ModelNet40-C and Pre-trained Models
+Make sure you are in `ModelNet40-C`. `download.sh` script can be used for downloading all the data and the pretrained models. It also places them at the correct locations.
+
+To download ModelNet40 execute the following command. This will download the ModelNet40 point cloud dataset released with pointnet++ as well as the validation splits used in our work.
+```
+./download.sh modelnet40
+```
 To generate the ModelNet40-C dataset, please run:
 ```
 python data/generate_c.py
 ```
 NOTE that the generation needs a monitor connected since Open3D library does not support background rendering. 
 
-#### Download Datasets Including ModelNet40-C and Pre-trained Models
-Make sure you are in `ModelNet40-C`. `download.sh` script can be used for downloading all the data and the pretrained models. It also places them at the correct locations.
 We also allow users to download ModelNet40-C directly:
 ```
 ./download.sh modelnet40_c
-```
-To download ModelNet40 execute the following command. This will download the ModelNet40 point cloud dataset released with pointnet++ as well as the validation splits used in our work.
-```
-./download.sh modelnet40
 ```
 To download the pretrained models with standard training recipe, execute the following command.
 ```
