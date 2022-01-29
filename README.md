@@ -2,7 +2,7 @@
 
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
 
-This Codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions:
+This codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions:
 ```
 @article{goyal2021revisiting,
   title={Revisiting Point Cloud Shape Classification with a Simple and Effective Baseline},
