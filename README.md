@@ -2,6 +2,16 @@
 
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
 
+Please cite our paper if you use our benchmark and analysis results. Thank you!
+```
+@article{sun2022benchmarking,
+      title={Benchmarking Robustness of 3D Point Cloud Recognition Against Common Corruptions}, 
+      author={Jiachen Sun and Qingzhao Zhang and Bhavya Kailkhura and Zhiding Yu and Chaowei Xiao and Z. Morley Mao},
+      year={2022},
+      journal={arXiv preprint arXiv:2201.12296},
+}
+```
+
 This codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions:
 ```
 @article{goyal2021revisiting,
