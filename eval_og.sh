@@ -1,3 +1,8 @@
+
+if [ ! -d "output" ]; then
+    mkdir "output"
+fi
+
 for model in 'dgcnn' 'rscnn' 'pct' 'pointnet' 'pointnet2'  'simpleview'; do
 for aug in 'pgd'; do
 
