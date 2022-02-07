@@ -80,7 +80,7 @@ python data/generate_c.py
 ```
 NOTE that the generation needs a monitor connected since Open3D library does not support background rendering. 
 
-We also allow users to download ModelNet40-C directly:
+We also allow users to download ModelNet40-C directly. Please fill this [Google form](https://docs.google.com/forms/d/e/1FAIpQLSdrzt8EtQdjGMlwIwWAzb39KzzVzijpK6-sPEaps07MjQwGGQ/viewform?usp=sf_link) while downloading our dataset.
 ```
 ./download.sh modelnet40_c
 ```
