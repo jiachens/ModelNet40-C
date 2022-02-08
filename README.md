@@ -1,13 +1,44 @@
 # Benchmarking Robustness of 3D Point Cloud Recognition against Common Corruptions 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/benchmarking-robustness-of-3d-point-cloud/3d-point-cloud-classification-on-modelnet40-c)](https://paperswithcode.com/sota/3d-point-cloud-classification-on-modelnet40-c?p=benchmarking-robustness-of-3d-point-cloud)
 
+This repo contains the dataset and code for the paper [Benchmarking Robustness of 3D Point Cloud Recognition against Common Corruptions](https://arxiv.org/abs/2201.12296) by Jiachen Sun et al. This codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions.
+
+## ModelNet40-C
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
 
-This codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions.
+[Download ModelNet40-C here.](https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing)
 
 ## ModelNet40-C Leaderboard 
 
-Coming Soon ...
+**Architecture+Data Augmentation Leaderboard** </br>
+
+| **Architecture** | **Data Augmentation**    | **Corruption Error Rate** | **Clean Error Rate** | **Checkpoint**                                                                                   |
+|------------------|---------------|:-------------------------:|:--------------------:|--------------------------------------------------------------------------------------------------|
+| PCT              | PointCutMix-R |            16.3           |          7.2         | [checkpoint](https://drive.google.com/file/d/1wV9Yxao4zlm3Wfqvgfo43Thr4Dy-tQzh/view?usp=sharing) |
+| PCT              | PointCutMix-K |            16.5           |          6.9         | [checkpoint](https://drive.google.com/file/d/1uFsNaeliVQdexS7vEh2WWPbJEBj8Fm4K/view?usp=sharing) |
+| DGCNN            | PointCutMix-R |            17.3           |          6.8         | [checkpoint](https://drive.google.com/file/d/1h17unRvpBinodgfsVV-yyMyOXzyKmm9b/view?usp=sharing) |
+| PCT              | RSMix         |            17.3           |          6.9         | [checkpoint](https://drive.google.com/file/d/14VmsRtf4rXu_4OFq7i_HJH8YxoV33LtH/view?usp=sharing) |
+| DGCNN            | PointCutMix-K |            17.3           |          7.4         | [checkpoint](https://drive.google.com/file/d/1vJ2WNuxVhmR8TTPoTYwU86lYah7s7Qbj/view?usp=sharing) |
+| RSCNN            | PointCutMix-R |            17.9           |          7.6         | [checkpoint](https://drive.google.com/file/d/1jFa8QJVp52aHyNrdLvQX6PqHf5YXJPpS/view?usp=sharing) |
+| DGCNN            | RSMix         |            18.1           |          7.1         | [checkpoint](https://drive.google.com/file/d/1Dpfv--BsTh-DNn3GxpJKDa6yhqKAggkE/view?usp=sharing) |
+| PCT              | PGD Adv Train |            18.4           |          8.9         | [checkpoint](https://drive.google.com/file/d/1zNzAZyG1lYTPLIKahyvTs3wlho2-8gGP/view?usp=sharing) |
+| PointNet++       | PointCutMix-R |            19.1           |          7.1         | [checkpoint](https://drive.google.com/file/d/1HlI4VNDoywPvQ8IJhf4G69wexE-KLs-H/view?usp=sharing) |
+| PointNet++       | PointMixup    |            19.3           |          7.1         | [checkpoint](https://drive.google.com/file/d/1eQ_iHGnOxFihGII8iol7pvkiQ2Vit8Pv/view?usp=sharing) |
+| PCT              | PointMixup    |            19.5           |          7.4         | [checkpoint](https://drive.google.com/file/d/1nvMM7w13uCEeLco16Q7F6WYseyczIEe7/view?usp=sharing) |
+| SimpleView       | PointCutMix-R |            19.7           |          7.9         | [checkpoint](https://drive.google.com/file/d/1yqVzd8UIFkpq5QHVVHzD8zDSRShEHORy/view?usp=sharing) |
+| RSCNN            | PointMixup    |            19.8           |          7.2         | [checkpoint](https://drive.google.com/file/d/1ZwBZhOKm0-ogTILo2TgOip6xMxLOoXSJ/view?usp=sharing) |
+| PointNet++       | PointCutMix-K |            20.2           |          6.7         | [checkpoint](https://drive.google.com/file/d/1Yf1Jxo1vat_pSot2B48t2gRfi-wLyqPq/view?usp=sharing) |
+
+**Architecture Leaderboard** </br>
+
+| **Architecture** | **Corruption Error Rate** | **Clean Error Rate** | **Checkpoint**                                                                                   |
+|------------------|:-------------------------:|:--------------------:|--------------------------------------------------------------------------------------------------|
+| PointNet++       |            23.6           |          7.0         | [checkpoint](https://drive.google.com/file/d/1yf_6-jYnQoPGhGjmvGtIoEZT_E0vxV8i/view?usp=sharing) |
+| PCT              |            25.5           |          7.1         | [checkpoint](https://drive.google.com/file/d/1Ljr6QiLIJ5T2RVHNCRowPf0y_aRK6LPZ/view?usp=sharing) |
+| DGCNN            |            25.9           |          7.4         | [checkpoint](https://drive.google.com/file/d/1IoXUKyz9lWynGTPdvBLL4GxpCKyZuyC6/view?usp=sharing) |
+| RSCNN            |            26.2           |          7.7         | [checkpoint](https://drive.google.com/file/d/1RKhXKjZvKvZM2the2qqFhnytAX2H634U/view?usp=sharing) |
+| SimpleView       |            27.2           |          6.1         | [checkpoint](https://drive.google.com/file/d/1jscF5p3Q7DHWl-FgGGemQP3CeXITsTyY/view?usp=sharing) |
+| PointNet         |            28.3           |          9.3         | [checkpoint](https://drive.google.com/file/d/1cAHgSv_BXQEgpdU-8QNNqxugS_ntS7nJ/view?usp=sharing) |
 
 ## Getting Started
 
@@ -67,13 +98,13 @@ To download the pretrained models using different data augmentation strategies, 
 ./download.sh runs
 ```
 
-## New Features
+#### New Features
 - We include Point Cloud Transformer (PCT) in our benchmark
 - `ModelNet40-C/configs` contains config files to enable different data augmentations and test-time adaptation methods
 - `ModelNet40-C/aug_utils.py` contains the data augmentation codes in our paper
 - `ModelNet40-C/third_party` contains the test-time adaptation used in our paper
 
-## Code Organization In Originial SimpleView
+#### Code Organization In Originial SimpleView
 - `ModelNet40-C/models`: Code for various models in PyTorch.
 - `ModelNet40-C/configs`: Configuration files for various models.
 - `ModelNet40-C/main.py`: Training and testing any models.
@@ -105,6 +136,7 @@ python main.py --entry test --model-path <cor_exp/runs>/<cfg_name>/<model_name>.
 
 We list all the evaluation commands in the `eval_*.sh` script. Note that in `eval_cor.sh` it is expected that pgd with PointNet++, RSCNN, and SimpleView do not have outputs since they do not fit the adversarial training framework. We have mentioned this in our paper.
 
+## Citation
 Please cite our paper and SimpleView if you use our benchmark and analysis results. Thank you!
 ```
 @article{sun2022benchmarking,
