@@ -3,7 +3,7 @@
 
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
 
-This codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions:
+This codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions.
 
 ## ModelNet40-C Leaderboard 
 
