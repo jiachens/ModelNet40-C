@@ -34,20 +34,11 @@ conda install sed  # for downloading data and pretrained models
 ```
 
 For PointNet++, we need to install custom CUDA modules. Make sure you have access to a GPU during this step. You might need to set the appropriate `TORCH_CUDA_ARCH_LIST` environment variable depending on your GPU model. The following command should work for most cases `export TORCH_CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.5"`. However, if the install fails, check if `TORCH_CUDA_ARCH_LIST` is correctly set. More details could be found [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported).
+
+Third-party modules `pointnet2_pyt`, `PCT_Pytorch`, `emd`, and `PyGeM` can be installed by the following script.
+
 ```
-cd pointnet2_pyt && pip install -e . && cd ..
-```
-We also need to install pointnet2 operation library.
-```
-cd PCT_Pytorch/pointnet2_ops_lib && python setup.py install && cd -
-```
-We also need to install the earth mover distance module.
-```
-cd emd && python setup.py install && cd ..
-```
-We also need to install PyGem, since we it for the ModelNet40-C dataset generation.
-```
-cd PyGeM && python setup.py install && cd ..
+bash setup.sh
 ```
 
 #### Download Datasets Including ModelNet40-C and Pre-trained Models
