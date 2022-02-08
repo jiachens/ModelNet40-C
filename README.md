@@ -38,7 +38,7 @@ For PointNet++, we need to install custom CUDA modules. Make sure you have acces
 Third-party modules `pointnet2_pyt`, `PCT_Pytorch`, `emd`, and `PyGeM` can be installed by the following script.
 
 ```
-bash setup.sh
+./setup.sh
 ```
 
 #### Download Datasets Including ModelNet40-C and Pre-trained Models
