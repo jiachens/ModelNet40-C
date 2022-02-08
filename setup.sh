@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -e
 PYTHON_BIN=${PYTHON_BIN:-python}
 
