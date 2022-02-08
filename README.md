@@ -1,26 +1,9 @@
-**Benchmarking Robustness of 3D Point Cloud Recognition against Common Corruptions** <br>
+# Benchmarking Robustness of 3D Point Cloud Recognition against Common Corruptions 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/benchmarking-robustness-of-3d-point-cloud/3d-point-cloud-classification-on-modelnet40-c)](https://paperswithcode.com/sota/3d-point-cloud-classification-on-modelnet40-c?p=benchmarking-robustness-of-3d-point-cloud)
 
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
 
-Please cite our paper if you use our benchmark and analysis results. Thank you!
-```
-@article{sun2022benchmarking,
-      title={Benchmarking Robustness of 3D Point Cloud Recognition Against Common Corruptions}, 
-      author={Jiachen Sun and Qingzhao Zhang and Bhavya Kailkhura and Zhiding Yu and Chaowei Xiao and Z. Morley Mao},
-      journal={arXiv preprint arXiv:2201.12296},
-      year={2022}
-}
-```
-
 This codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions:
-```
-@article{goyal2021revisiting,
-  title={Revisiting Point Cloud Shape Classification with a Simple and Effective Baseline},
-  author={Goyal, Ankit and Law, Hei and Liu, Bowei and Newell, Alejandro and Deng, Jia},
-  journal={International Conference on Machine Learning},
-  year={2021}
-}
-```
 
 ## ModelNet40-C Leaderboard 
 
@@ -130,6 +113,24 @@ python main.py --entry test --model-path <cor_exp/runs>/<cfg_name>/<model_name>.
 ```
 
 We list all the evaluation commands in the `eval_*.sh` script. Note that in `eval_cor.sh` it is expected that pgd with PointNet++, RSCNN, and SimpleView do not have outputs since they do not fit the adversarial training framework. We have mentioned this in our paper.
+
+Please cite our paper and SimpleView if you use our benchmark and analysis results. Thank you!
+```
+@article{sun2022benchmarking,
+      title={Benchmarking Robustness of 3D Point Cloud Recognition Against Common Corruptions}, 
+      author={Jiachen Sun and Qingzhao Zhang and Bhavya Kailkhura and Zhiding Yu and Chaowei Xiao and Z. Morley Mao},
+      journal={arXiv preprint arXiv:2201.12296},
+      year={2022}
+}
+```
+```
+@article{goyal2021revisiting,
+  title={Revisiting Point Cloud Shape Classification with a Simple and Effective Baseline},
+  author={Goyal, Ankit and Law, Hei and Liu, Bowei and Newell, Alejandro and Deng, Jia},
+  journal={International Conference on Machine Learning},
+  year={2021}
+}
+```
 
 ## References
 
