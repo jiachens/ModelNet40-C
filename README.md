@@ -6,7 +6,11 @@ This repo contains the dataset and code for the paper [Benchmarking Robustness o
 ## ModelNet40-C
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
 
-[Download ModelNet40-C here.](https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing)
+[Download ModelNet40-C from Google Drive.](https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing)
+
+[Download ModelNet40-C using our provided script.](#download-datasets-including-modelnet40-c-and-pre-trained-models)
+
+[Download ModelNet40-C from Zenodo](https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing)
 
 ## ModelNet40-C Leaderboard 
 
@@ -29,6 +33,8 @@ This repo contains the dataset and code for the paper [Benchmarking Robustness o
 | RSCNN            | PointMixup    |            19.8           |          7.2         | [checkpoint](https://drive.google.com/file/d/1ZwBZhOKm0-ogTILo2TgOip6xMxLOoXSJ/view?usp=sharing) |
 | PointNet++       | PointCutMix-K |            20.2           |          6.7         | [checkpoint](https://drive.google.com/file/d/1Yf1Jxo1vat_pSot2B48t2gRfi-wLyqPq/view?usp=sharing) |
 
+We allow users to directly download all pre-trained models with every data augmentation method [here](#download-datasets-including-modelnet40-c-and-pre-trained-models).
+
 **Architecture Leaderboard** </br>
 
 | **Architecture** | **Corruption Error Rate** | **Clean Error Rate** | **Checkpoint**                                                                                   |
@@ -39,6 +45,8 @@ This repo contains the dataset and code for the paper [Benchmarking Robustness o
 | RSCNN            |            26.2           |          7.7         | [checkpoint](https://drive.google.com/file/d/1RKhXKjZvKvZM2the2qqFhnytAX2H634U/view?usp=sharing) |
 | SimpleView       |            27.2           |          6.1         | [checkpoint](https://drive.google.com/file/d/1jscF5p3Q7DHWl-FgGGemQP3CeXITsTyY/view?usp=sharing) |
 | PointNet         |            28.3           |          9.3         | [checkpoint](https://drive.google.com/file/d/1cAHgSv_BXQEgpdU-8QNNqxugS_ntS7nJ/view?usp=sharing) |
+
+We allow users to directly download all pre-trained models with standard training [here](#download-datasets-including-modelnet40-c-and-pre-trained-models).
 
 ## Getting Started
 
@@ -125,6 +133,10 @@ The config files are named as `<protocol>_<model_name><_extra>_run_<seed>.yaml` 
 
 We additionally leverage PointCutMix: `configs/cutmix`, PointMixup: `configs/mixup`, RSMix: `configs/rsmix`, and PGD-based adversarial training `configs/pgd` as the training-time config files.
 
+For example, to train PCT with PointCutMix-R, please use the following command:
+```
+python main.py --exp-config configs/cutmix/pct_r.yaml
+```
 
 #### Evaluate a pretrained model
 We provide pretrained models. They can be downloaded using the `./download.sh cor_exp` and `./download.sh runs` commands and are stored in the `ModelNet40-C/runs` (for data augmentation recipes) and `ModelNet40-C/cor_exp` (for standard trained models) folders. To test a pretrained model, the command is of the following format.
@@ -134,7 +146,7 @@ Additionally, we provide test-time config files in `configs/bn` and `configs/ten
 python main.py --entry test --model-path <cor_exp/runs>/<cfg_name>/<model_name>.pth --exp-config configs/<cfg_name>.yaml
 ```
 
-We list all the evaluation commands in the `eval_*.sh` script. Note that in `eval_cor.sh` it is expected that pgd with PointNet++, RSCNN, and SimpleView do not have outputs since they do not fit the adversarial training framework. We have mentioned this in our paper.
+We list all the evaluation commands in the `eval_cor.sh`, `eval_og.sh`, `eval_tent_cutmix.sh` scripts. Note that in `eval_cor.sh` it is expected that pgd with PointNet++, RSCNN, and SimpleView do not have outputs since they do not fit the adversarial training framework. We have mentioned this in our paper.
 
 ## Citation
 Please cite our paper and SimpleView if you use our benchmark and analysis results. Thank you!
