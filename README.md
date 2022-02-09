@@ -10,7 +10,7 @@ This repo contains the dataset and code for the paper [Benchmarking Robustness o
 
 [Download ModelNet40-C using our provided script.](#download-datasets-including-modelnet40-c-and-pre-trained-models)
 
-[Download ModelNet40-C from Zenodo](https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing)
+[Download ModelNet40-C from Zenodo.](https://zenodo.org/record/6017834#.YgNeKu7MK3J)
 
 ## ModelNet40-C Leaderboard 
 
