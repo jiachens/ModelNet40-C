@@ -46,6 +46,8 @@ We allow users to directly download all pre-trained models with every data augme
 | SimpleView       |            27.2           |          6.1         | [checkpoint](https://drive.google.com/file/d/1jscF5p3Q7DHWl-FgGGemQP3CeXITsTyY/view?usp=sharing) |
 | PointNet         |            28.3           |          9.3         | [checkpoint](https://drive.google.com/file/d/1cAHgSv_BXQEgpdU-8QNNqxugS_ntS7nJ/view?usp=sharing) |
 
+More models' results coming soon ......
+
 We allow users to directly download all pre-trained models with standard training [here](#download-datasets-including-modelnet40-c-and-pre-trained-models).
 
 ## Getting Started
