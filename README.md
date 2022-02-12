@@ -16,7 +16,7 @@ This repo contains the dataset and code for the paper [Benchmarking Robustness o
 
 **Architecture+Data Augmentation Leaderboard** </br>
 
-| **Architecture** | **Data Augmentation**    | **Corruption Error Rate** | **Clean Error Rate** | **Checkpoint**                                                                                   |
+| **Architecture** | **Data Augmentation**    | **Corruption Error Rate (%)** | **Clean Error Rate (%)** | **Checkpoint**                                                                                   |
 |------------------|---------------|:-------------------------:|:--------------------:|--------------------------------------------------------------------------------------------------|
 | PCT              | PointCutMix-R |            16.3           |          7.2         | [checkpoint](https://drive.google.com/file/d/1wV9Yxao4zlm3Wfqvgfo43Thr4Dy-tQzh/view?usp=sharing) |
 | PCT              | PointCutMix-K |            16.5           |          6.9         | [checkpoint](https://drive.google.com/file/d/1uFsNaeliVQdexS7vEh2WWPbJEBj8Fm4K/view?usp=sharing) |
@@ -37,7 +37,7 @@ We allow users to directly download all pre-trained models with every data augme
 
 **Architecture Leaderboard** </br>
 
-| **Architecture** | **Corruption Error Rate** | **Clean Error Rate** | **Checkpoint**                                                                                   |
+| **Architecture** | **Corruption Error Rate (%)** | **Clean Error Rate (%)** | **Checkpoint**                                                                                   | 
 |------------------|:-------------------------:|:--------------------:|--------------------------------------------------------------------------------------------------|
 | PointNet++       |            23.6           |          7.0         | [checkpoint](https://drive.google.com/file/d/1yf_6-jYnQoPGhGjmvGtIoEZT_E0vxV8i/view?usp=sharing) |
 | PCT              |            25.5           |          7.1         | [checkpoint](https://drive.google.com/file/d/1Ljr6QiLIJ5T2RVHNCRowPf0y_aRK6LPZ/view?usp=sharing) |
