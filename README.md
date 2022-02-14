@@ -6,6 +6,8 @@ This repo contains the dataset and code for the paper [Benchmarking Robustness o
 ## ModelNet40-C
 ![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
 
+More visualizations can be found [here](https://github.com/jiachens/ModelNet40-C/blob/master/img).
+
 [Download ModelNet40-C from Google Drive.](https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing)
 
 [Download ModelNet40-C using our provided script.](#download-datasets-including-modelnet40-c-and-pre-trained-models)
