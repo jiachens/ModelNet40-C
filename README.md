@@ -23,20 +23,20 @@ More visualizations can be found [here](https://github.com/jiachens/ModelNet40-C
 
 | **Architecture** | **Data Augmentation**    | **Corruption Error Rate (%)** | **Clean Error Rate (%)** | **Checkpoint**                                                                                   |
 |------------------|---------------|:-------------------------:|:--------------------:|--------------------------------------------------------------------------------------------------|
-| PCT              | PointCutMix-R |            16.3           |          7.2         | [checkpoint](https://drive.google.com/file/d/1wV9Yxao4zlm3Wfqvgfo43Thr4Dy-tQzh/view?usp=sharing) |
-| PCT              | PointCutMix-K |            16.5           |          6.9         | [checkpoint](https://drive.google.com/file/d/1uFsNaeliVQdexS7vEh2WWPbJEBj8Fm4K/view?usp=sharing) |
-| DGCNN            | PointCutMix-R |            17.3           |          6.8         | [checkpoint](https://drive.google.com/file/d/1h17unRvpBinodgfsVV-yyMyOXzyKmm9b/view?usp=sharing) |
-| PCT              | RSMix         |            17.3           |          6.9         | [checkpoint](https://drive.google.com/file/d/14VmsRtf4rXu_4OFq7i_HJH8YxoV33LtH/view?usp=sharing) |
-| DGCNN            | PointCutMix-K |            17.3           |          7.4         | [checkpoint](https://drive.google.com/file/d/1vJ2WNuxVhmR8TTPoTYwU86lYah7s7Qbj/view?usp=sharing) |
-| RSCNN            | PointCutMix-R |            17.9           |          7.6         | [checkpoint](https://drive.google.com/file/d/1jFa8QJVp52aHyNrdLvQX6PqHf5YXJPpS/view?usp=sharing) |
-| DGCNN            | RSMix         |            18.1           |          7.1         | [checkpoint](https://drive.google.com/file/d/1Dpfv--BsTh-DNn3GxpJKDa6yhqKAggkE/view?usp=sharing) |
-| PCT              | PGD Adv Train |            18.4           |          8.9         | [checkpoint](https://drive.google.com/file/d/1zNzAZyG1lYTPLIKahyvTs3wlho2-8gGP/view?usp=sharing) |
-| PointNet++       | PointCutMix-R |            19.1           |          7.1         | [checkpoint](https://drive.google.com/file/d/1HlI4VNDoywPvQ8IJhf4G69wexE-KLs-H/view?usp=sharing) |
-| PointNet++       | PointMixup    |            19.3           |          7.1         | [checkpoint](https://drive.google.com/file/d/1eQ_iHGnOxFihGII8iol7pvkiQ2Vit8Pv/view?usp=sharing) |
-| PCT              | PointMixup    |            19.5           |          7.4         | [checkpoint](https://drive.google.com/file/d/1nvMM7w13uCEeLco16Q7F6WYseyczIEe7/view?usp=sharing) |
-| SimpleView       | PointCutMix-R |            19.7           |          7.9         | [checkpoint](https://drive.google.com/file/d/1yqVzd8UIFkpq5QHVVHzD8zDSRShEHORy/view?usp=sharing) |
-| RSCNN            | PointMixup    |            19.8           |          7.2         | [checkpoint](https://drive.google.com/file/d/1ZwBZhOKm0-ogTILo2TgOip6xMxLOoXSJ/view?usp=sharing) |
-| PointNet++       | PointCutMix-K |            20.2           |          6.7         | [checkpoint](https://drive.google.com/file/d/1Yf1Jxo1vat_pSot2B48t2gRfi-wLyqPq/view?usp=sharing) |
+| PCT              | PointCutMix-R |            16.3           |          7.2         | [checkpoint](https://drive.google.com/file/d/1OcH0o7V_RhAOj9pSuS39G43VrBWS-1v3/view?usp=sharing) |
+| PCT              | PointCutMix-K |            16.5           |          6.9         | [checkpoint](https://drive.google.com/file/d/1T4KwMkgAqAItHZc-Q96H1qGMPNoObJkJ/view?usp=sharing) |
+| DGCNN            | PointCutMix-R |            17.3           |          6.8         | [checkpoint](https://drive.google.com/file/d/1Z_6D_MmjecDHhY2q-I-aok9nlD9RkAS1/view?usp=sharing) |
+| PCT              | RSMix         |            17.3           |          6.9         | [checkpoint](https://drive.google.com/file/d/18BqbMCpdbEGdyQVdMwYPDrff5bmgeF9B/view?usp=sharing) |
+| DGCNN            | PointCutMix-K |            17.3           |          7.4         | [checkpoint](https://drive.google.com/file/d/1rUQApmyEJUpv7JzkhJuwEeZOmmZ9vEDU/view?usp=sharing) |
+| RSCNN            | PointCutMix-R |            17.9           |          7.6         | [checkpoint](https://drive.google.com/file/d/1EggUiFcCgpHOwjgQKRgBxST1utfOAryc/view?usp=sharing) |
+| DGCNN            | RSMix         |            18.1           |          7.1         | [checkpoint](https://drive.google.com/file/d/11tNaF-YsJ6hZNm2pY6LX6Ny-ceGkI0Cr/view?usp=sharing) |
+| PCT              | PGD Adv Train |            18.4           |          8.9         | [checkpoint](https://drive.google.com/file/d/1Y7JaW-CLPCcqQQGiuL9BfVKfAkm6MxEA/view?usp=sharing) |
+| PointNet++       | PointCutMix-R |            19.1           |          7.1         | [checkpoint](https://drive.google.com/file/d/1un_H1oq18MrN604mbR3htBNqdOgnXqwQ/view?usp=sharing) |
+| PointNet++       | PointMixup    |            19.3           |          7.1         | [checkpoint](https://drive.google.com/file/d/1fzFOeJcenn7a4glsfs7IEcSTjovZoAkB/view?usp=sharing) |
+| PCT              | PointMixup    |            19.5           |          7.4         | [checkpoint](https://drive.google.com/file/d/1OcBm-PCImcW8h1mb9ZY4CcX2nDN_rB8b/view?usp=sharing) |
+| SimpleView       | PointCutMix-R |            19.7           |          7.9         | [checkpoint](https://drive.google.com/file/d/178LQKtmCeNIbdPXYZXZHRmAQt-YCY_eL/view?usp=sharing) |
+| RSCNN            | PointMixup    |            19.8           |          7.2         | [checkpoint](https://drive.google.com/file/d/1FRPU_QTR3vda1CqPWKkREprIZshv4cYk/view?usp=sharing) |
+| PointNet++       | PointCutMix-K |            20.2           |          6.7         | [checkpoint](https://drive.google.com/file/d/1JLL7ym-fMUS4VFisf-AENB5trYJb_0-J/view?usp=sharing) |
 
 We allow users to directly download all pre-trained models with every data augmentation method [here](#download-datasets-including-modelnet40-c-and-pre-trained-models).
 
@@ -44,12 +44,12 @@ We allow users to directly download all pre-trained models with every data augme
 
 | **Architecture** | **Corruption Error Rate (%)** | **Clean Error Rate (%)** | **Checkpoint**                                                                                   | 
 |------------------|:-------------------------:|:--------------------:|--------------------------------------------------------------------------------------------------|
-| PointNet++       |            23.6           |          7.0         | [checkpoint](https://drive.google.com/file/d/1yf_6-jYnQoPGhGjmvGtIoEZT_E0vxV8i/view?usp=sharing) |
-| PCT              |            25.5           |          7.1         | [checkpoint](https://drive.google.com/file/d/1Ljr6QiLIJ5T2RVHNCRowPf0y_aRK6LPZ/view?usp=sharing) |
-| DGCNN            |            25.9           |          7.4         | [checkpoint](https://drive.google.com/file/d/1IoXUKyz9lWynGTPdvBLL4GxpCKyZuyC6/view?usp=sharing) |
+| PointNet++       |            23.6           |          7.0         | [checkpoint](https://drive.google.com/file/d/18_297KJ8slsJq1rGDsvuQ29VICs-EJTa/view?usp=sharing) |
+| PCT              |            25.5           |          7.1         | [checkpoint](https://drive.google.com/file/d/1NFAhupQKn-sBLYW1YpUAf4jdqMpFcV7Z/view?usp=sharing) |
+| DGCNN            |            25.9           |          7.4         | [checkpoint](https://drive.google.com/file/d/1JMCmujJM4J_OyxuZuDN4befFmtG1_p49/view?usp=sharing) |
 | RSCNN            |            26.2           |          7.7         | [checkpoint](https://drive.google.com/file/d/1RKhXKjZvKvZM2the2qqFhnytAX2H634U/view?usp=sharing) |
 | SimpleView       |            27.2           |          6.1         | [checkpoint](https://drive.google.com/file/d/1jscF5p3Q7DHWl-FgGGemQP3CeXITsTyY/view?usp=sharing) |
-| PointNet         |            28.3           |          9.3         | [checkpoint](https://drive.google.com/file/d/1cAHgSv_BXQEgpdU-8QNNqxugS_ntS7nJ/view?usp=sharing) |
+| PointNet         |            28.3           |          9.3         | [checkpoint](https://drive.google.com/file/d/1eW26u0nm6HETwDSiCyCEoLLY3WnOVt73/view?usp=sharing) |
 
 More models' results coming soon ......
 
