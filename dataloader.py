@@ -8,7 +8,7 @@ from pc_utils import (rotate_point_cloud, PointcloudScaleAndTranslate)
 import rs_cnn.data.data_utils as rscnn_d_utils
 from rs_cnn.data.ModelNet40Loader import ModelNet40Cls as rscnn_ModelNet40Cls
 import pointnet2.utils.pointnet2_utils as pointnet2_utils
-from pointnet2_tf.modelnet_h5_dataset import ModelNetH5Dataset as pointnet2_ModelNetH5Dataset
+# from pointnet2_tf.modelnet_h5_dataset import ModelNetH5Dataset as pointnet2_ModelNetH5Dataset
 from dgcnn.pytorch.data import ModelNet40 as dgcnn_ModelNet40
 
 
@@ -72,52 +72,52 @@ class ModelNet40Rscnn(Dataset):
 # distilled from the following sources:
 # https://github.com/charlesq34/pointnet2/blob/7961e26e31d0ba5a72020635cee03aac5d0e754a/modelnet_h5_dataset.py
 # https://github.com/charlesq34/pointnet2/blob/7961e26e31d0ba5a72020635cee03aac5d0e754a/train.py
-class ModelNet40PN2(Dataset):
-    def __init__(self, split, train_data_path,
-                 valid_data_path, test_data_path, num_points):
-        self.split = split
-        self.dataset_name = 'modelnet40_pn2'
-        data_path = {
-            "train": train_data_path,
-            "valid": valid_data_path,
-            "test":  test_data_path
-        }[self.split]
-        pointnet2_params = {
-            'list_filename': data_path,
-            # this has nothing to do with actual dataloader batch size
-            'batch_size': 32,
-            'npoints': num_points,
-            'shuffle': False
-        }
+# class ModelNet40PN2(Dataset):
+#     def __init__(self, split, train_data_path,
+#                  valid_data_path, test_data_path, num_points):
+#         self.split = split
+#         self.dataset_name = 'modelnet40_pn2'
+#         data_path = {
+#             "train": train_data_path,
+#             "valid": valid_data_path,
+#             "test":  test_data_path
+#         }[self.split]
+#         pointnet2_params = {
+#             'list_filename': data_path,
+#             # this has nothing to do with actual dataloader batch size
+#             'batch_size': 32,
+#             'npoints': num_points,
+#             'shuffle': False
+#         }
 
-        # loading all the pointnet2data
-        self._dataset = pointnet2_ModelNetH5Dataset(**pointnet2_params)
-        all_pc = []
-        all_label = []
-        while self._dataset.has_next_batch():
-            # augmentation here has nothing to do with actual data_augmentation
-            pc, label = self._dataset.next_batch(augment=False)
-            all_pc.append(pc)
-            all_label.append(label)
-        self.all_pc = np.concatenate(all_pc)
-        self.all_label = np.concatenate(all_label)
+#         # loading all the pointnet2data
+#         self._dataset = pointnet2_ModelNetH5Dataset(**pointnet2_params)
+#         all_pc = []
+#         all_label = []
+#         while self._dataset.has_next_batch():
+#             # augmentation here has nothing to do with actual data_augmentation
+#             pc, label = self._dataset.next_batch(augment=False)
+#             all_pc.append(pc)
+#             all_label.append(label)
+#         self.all_pc = np.concatenate(all_pc)
+#         self.all_label = np.concatenate(all_label)
 
-    def __len__(self):
-        return self.all_pc.shape[0]
+#     def __len__(self):
+#         return self.all_pc.shape[0]
 
-    def __getitem__(self, idx):
-        return {'pc': self.all_pc[idx], 'label': np.int64(self.all_label[idx])}
+#     def __getitem__(self, idx):
+#         return {'pc': self.all_pc[idx], 'label': np.int64(self.all_label[idx])}
 
-    def batch_proc(self, data_batch, device):
-        if self.split == "train":
-            point = np.array(data_batch['pc'])
-            point = self._dataset._augment_batch_data(point)
-            # converted to tensor to maintain compatibility with the other code
-            data_batch['pc'] = torch.tensor(point)
-        else:
-            pass
+#     def batch_proc(self, data_batch, device):
+#         if self.split == "train":
+#             point = np.array(data_batch['pc'])
+#             point = self._dataset._augment_batch_data(point)
+#             # converted to tensor to maintain compatibility with the other code
+#             data_batch['pc'] = torch.tensor(point)
+#         else:
+#             pass
 
-        return data_batch
+#         return data_batch
 
 
 class ModelNet40Dgcnn(Dataset):
