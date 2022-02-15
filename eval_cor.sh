@@ -1,8 +1,15 @@
 if [ ! -d "output" ]; then
+###
+ # @Description: 
+ # @Autor: Jiachen Sun
+ # @Date: 2022-02-09 00:30:45
+ # @LastEditors: Jiachen Sun
+ # @LastEditTime: 2022-02-15 00:26:03
+### 
     mkdir "output"
 fi
 
-for model in 'pointnet2' 'pct' 'rscnn' 'pointnet'  'simpleview' 'dgcnn'; do
+for model in 'pointnet' 'pct' 'rscnn' 'pointnet2'  'simpleview' 'dgcnn'; do
 for cor in 'uniform' 'gaussian' 'background' 'impulse' 'upsampling' 'distortion_rbf' 'distortion_rbf_inv' 'density' 'density_inc' 'shear' 'rotation' 'cutout' 'distortion'  'occlusion' 'lidar'; do
 
 for sev in 1 2 3 4 5; do
