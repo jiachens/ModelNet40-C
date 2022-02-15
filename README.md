@@ -4,7 +4,12 @@
 This repo contains the dataset and code for the paper [Benchmarking Robustness of 3D Point Cloud Recognition against Common Corruptions](https://arxiv.org/abs/2201.12296) by Jiachen Sun et al. This codebase is based on [SimpleView](https://github.com/princeton-vl/SimpleView), and we thank the authors for their great contributions.
 
 ## ModelNet40-C
-![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/example.png)
+![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/1.png)
+
+![image](https://github.com/jiachens/ModelNet40-C/blob/master/img/54.png)
+
+
+More visualizations can be found [here](https://github.com/jiachens/ModelNet40-C/blob/master/img).
 
 [Download ModelNet40-C from Google Drive.](https://drive.google.com/drive/folders/10YeQRh92r_WdL-Dnog2zQfFr03UW4qXX?usp=sharing)
 
