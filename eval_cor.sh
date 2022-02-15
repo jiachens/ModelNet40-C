@@ -1,17 +1,8 @@
-
-###
- # @Description: 
- # @Autor: Jiachen Sun
- # @Date: 2022-01-27 17:01:16
- # @LastEditors: Jiachen Sun
- # @LastEditTime: 2022-01-27 17:01:38
-### 
-
 if [ ! -d "output" ]; then
     mkdir "output"
 fi
 
-for model in 'rscnn' 'pct' 'pointnet' 'pointnet2'  'simpleview' 'dgcnn'; do
+for model in 'pointnet2' 'pct' 'rscnn' 'pointnet'  'simpleview' 'dgcnn'; do
 for cor in 'uniform' 'gaussian' 'background' 'impulse' 'upsampling' 'distortion_rbf' 'distortion_rbf_inv' 'density' 'density_inc' 'shear' 'rotation' 'cutout' 'distortion'  'occlusion' 'lidar'; do
 
 for sev in 1 2 3 4 5; do
