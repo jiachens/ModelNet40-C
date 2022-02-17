@@ -484,7 +484,7 @@ def entry_train(cfg, resume=False, model_path=""):
 
         if (not cfg.EXP_EXTRA.no_val) and epoch % cfg.EXP_EXTRA.val_eval_freq == 0:
                 print('\nValidating..')
-                val_perf = validate(cfg.EXP.TASK, loader_valid, model, cfg.EXP.DATASET)
+                val_perf = validate(cfg.EXP.TASK, loader_valid, model, cfg.EXP.DATASET,cfg.ADAPT)
                 pprint.pprint(val_perf, width=80)
                 tb.update('val', epoch, val_perf)
         else:
@@ -492,7 +492,7 @@ def entry_train(cfg, resume=False, model_path=""):
 
         if (not cfg.EXP_EXTRA.no_test) and (epoch % cfg.EXP_EXTRA.test_eval_freq == 0):
             print('\nTesting..')
-            test_perf = validate(cfg.EXP.TASK, loader_test, model, cfg.EXP.DATASET)
+            test_perf = validate(cfg.EXP.TASK, loader_test, model, cfg.EXP.DATASET, cfg.ADAPT)
             pprint.pprint(test_perf, width=80)
             tb.update('test', epoch, test_perf)
         else:
