@@ -4,7 +4,7 @@
  # @Autor: Jiachen Sun
  # @Date: 2022-01-22 15:29:58
  # @LastEditors: Jiachen Sun
- # @LastEditTime: 2022-02-15 00:18:53
+ # @LastEditTime: 2022-02-17 13:08:18
 ### 
 
 wgetgdrive(){
@@ -51,6 +51,11 @@ case $key in
 		unzip -o tmp/modelnet40_ply_hdf5_2048_valid_small.zip
 		mv modelnet40_ply_hdf5_2048_valid_small/* data/modelnet40_ply_hdf5_2048/
 		rm -r modelnet40_ply_hdf5_2048_valid_small
+		wget http://modelnet.cs.princeton.edu/ModelNet40.zip
+		unzip ModelNet40.zip
+		mv ModelNet40 data
+		rm -r ModelNet40.zip
+		rm -rf modelnet40_ply_hdf5_2048
 		;;
 	mesh)
 		wget --no-check-certificate http://modelnet.cs.princeton.edu/ModelNet40.zip
