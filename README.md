@@ -96,6 +96,7 @@ To download ModelNet40 execute the following command. This will download the Mod
 ```
 To generate the ModelNet40-C dataset, please run:
 ```
+python data/process.py
 python data/generate_c.py
 ```
 NOTE that the generation needs a monitor connected since Open3D library does not support background rendering. 
