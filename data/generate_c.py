@@ -357,10 +357,10 @@ def save_data(data,corruption,severity):
         
     new_data = []
     for i in range(data.shape[0]):
-        new_data.append(MAP[corruption](data[i],severity))
-        ### test ###
-        # if i == 100:
-        #     break
+        if corruption in ['occlusion', 'lidar']:
+            new_data.append(MAP[corruption](severity))
+        else:
+            new_data.append(MAP[corruption](data[i],severity))
     new_data = np.stack(new_data,axis=0)
     np.save("./data/modelnet40_c/data_" + corruption + "_" + str(severity) + ".npy", new_data)
 
@@ -389,14 +389,13 @@ ORIG_NUM = 1024
 if __name__ == "__main__":
     data, labels = load_data()
     for cor in MAP.keys():
-        # if cor in ['occlusion', 'lidar','original']:
+        # if cor in ['occlusion', 'lidar']:
         #     continue
         for sev in [1,2,3,4,5]:
             if cor == 'density_inc':
                 ORIG_NUM = 2048
             else:
                 ORIG_NUM = 1024
-            # print(data.shape[1])
             index = np.random.choice(data.shape[1],ORIG_NUM,replace=False)
             save_data(data[:,index,:], cor, sev)
             print("Done with Corruption: {} with Severity: {}".format(cor,sev))
