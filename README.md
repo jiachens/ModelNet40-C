@@ -115,6 +115,10 @@ To download the pretrained models using different data augmentation strategies, 
 ```
 
 #### New Features
+\[02-18-2022\]
+- We include CurveNet and PointMLP in our benchmark
+
+\[01-28-2022\]
 - We include Point Cloud Transformer (PCT) in our benchmark
 - `ModelNet40-C/configs` contains config files to enable different data augmentations and test-time adaptation methods
 - `ModelNet40-C/aug_utils.py` contains the data augmentation codes in our paper
