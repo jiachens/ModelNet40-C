@@ -403,6 +403,10 @@ def get_model(cfg):
         model = models.pointMLP(
             task=cfg.EXP.TASK,
             dataset=cfg.EXP.DATASET)
+    elif cfg.EXP.MODEL_NAME == 'curvenet':
+        model = models.CurveNet(
+            task=cfg.EXP.TASK,
+            dataset=cfg.EXP.DATASET)
     else:
         assert False
 
