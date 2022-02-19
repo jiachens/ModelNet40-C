@@ -50,6 +50,8 @@ We allow users to directly download all pre-trained models with every data augme
 | RSCNN            |            26.2           |          7.7         | [checkpoint](https://drive.google.com/file/d/1RKhXKjZvKvZM2the2qqFhnytAX2H634U/view?usp=sharing) |
 | SimpleView       |            27.2           |          6.1         | [checkpoint](https://drive.google.com/file/d/1jscF5p3Q7DHWl-FgGGemQP3CeXITsTyY/view?usp=sharing) |
 | PointNet         |            28.3           |          9.3         | [checkpoint](https://drive.google.com/file/d/1eW26u0nm6HETwDSiCyCEoLLY3WnOVt73/view?usp=sharing) |
+| CurveNet       |            28.5           |          6.6         | checkpoint |
+| PointMLP         |            36.2           |          6.3         | checkpoint |
 
 More models' results coming soon ......
 
