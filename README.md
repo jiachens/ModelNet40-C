@@ -68,6 +68,8 @@ git clone --recurse-submodules git@github.com:jiachens/ModelNet40-C.git
 #### Requirements
 The code is tested on Linux OS with Python version **3.7.5**, CUDA version **10.0**, CuDNN version **7.6** and GCC version **5.4**. We recommend using these versions especially for installing [pointnet++ custom CUDA modules](https://github.com/erikwijmans/Pointnet2_PyTorch/tree/22e8cf527b696b63b66f3873d80ae5f93744bdef).
 
+[02-23-2022] The updated codes are tested on Python version **3.7.5**, CUDA version **11.4**, CuDNN version **8.2** and GCC version **7.5**, but we still suggest the original setup in case of any unstable bugs.
+
 #### Install Libraries
 We recommend you first install [Anaconda](https://anaconda.org/) and create a virtual environment.
 ```
