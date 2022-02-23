@@ -7,7 +7,7 @@ import os
 from pc_utils import (rotate_point_cloud, PointcloudScaleAndTranslate)
 import rs_cnn.data.data_utils as rscnn_d_utils
 from rs_cnn.data.ModelNet40Loader import ModelNet40Cls as rscnn_ModelNet40Cls
-import pointnet2.utils.pointnet2_utils as pointnet2_utils
+import PCT_Pytorch.pointnet2_ops_lib.pointnet2_ops.pointnet2_utils as pointnet2_utils
 from pointnet2_tf.modelnet_h5_dataset import ModelNetH5Dataset as pointnet2_ModelNetH5Dataset
 from dgcnn.pytorch.data import ModelNet40 as dgcnn_ModelNet40
 
