@@ -119,6 +119,9 @@ To download the pretrained models using different data augmentation strategies, 
 ```
 
 #### New Features
+\[02-23-2022\]
+- We include PointMLP-Elite and GDANet in our benchmark
+
 \[02-18-2022\]
 - We include CurveNet and PointMLP in our benchmark
 
