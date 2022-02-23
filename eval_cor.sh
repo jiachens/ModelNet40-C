@@ -4,13 +4,13 @@
  # @Autor: Jiachen Sun
  # @Date: 2022-02-16 22:23:16
  # @LastEditors: Jiachen Sun
- # @LastEditTime: 2022-02-22 20:48:21
+ # @LastEditTime: 2022-02-23 17:20:27
 ### 
 if [ ! -d "output" ]; then
     mkdir "output"
 fi
 
-for model in 'pointMLP2'; do #'pointnet' 'pct' 'rscnn' 'pointnet2'  'simpleview' 'dgcnn'  'pointMLP' 'curvenet'; do
+for model in 'gdanet'; do #'pointnet' 'pct' 'rscnn' 'pointnet2'  'simpleview' 'dgcnn'  'pointMLP' 'curvenet'; do
 for cor in 'uniform' 'gaussian' 'background' 'impulse' 'upsampling' 'distortion_rbf' 'distortion_rbf_inv' 'density' 'density_inc' 'shear' 'rotation' 'cutout' 'distortion'  'occlusion' 'lidar'; do
 
 for sev in 1 2 3 4 5; do
