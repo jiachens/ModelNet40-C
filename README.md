@@ -51,7 +51,9 @@ We allow users to directly download all pre-trained models with every data augme
 | SimpleView       |            27.2           |          6.1         | [checkpoint](https://drive.google.com/file/d/1jscF5p3Q7DHWl-FgGGemQP3CeXITsTyY/view?usp=sharing) |
 | PointNet         |            28.3           |          9.3         | [checkpoint](https://drive.google.com/file/d/1eW26u0nm6HETwDSiCyCEoLLY3WnOVt73/view?usp=sharing) |
 | CurveNet       |            28.5           |          6.6         | checkpoint |
+| GDANet       |            30.8           |          7.5         | checkpoint |
 | PointMLP         |            36.2           |          6.3         | checkpoint |
+| PointMLP-Elite         |            38.5           |          7.2         | checkpoint |
 
 More models' results coming soon ......
 
