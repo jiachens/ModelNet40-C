@@ -213,3 +213,8 @@ Please cite our paper and SimpleView if you use our benchmark and analysis resul
 [11] [Goyal, Ankit, et al. "Revisiting Point Cloud Shape Classification with a Simple and Effective Baseline." arXiv preprint arXiv:2106.05304 (2021).](https://arxiv.org/pdf/2106.05304.pdf)
 
 [12] [Guo, Meng-Hao, et al. "Pct: Point cloud transformer." Computational Visual Media 7.2 (2021): 187-199.](https://link.springer.com/content/pdf/10.1007/s41095-021-0229-5.pdf)
+
+
+[13] [Xiang, Tiange, et al. "Walk in the cloud: Learning curves for point clouds shape analysis." Proceedings of the IEEE/CVF International Conference on Computer Vision. 2021.](https://arxiv.org/pdf/2105.01288.pdf)
+
+[14] [Ma, Xu, et al. "Rethinking Network Design and Local Geometry in Point Cloud: A Simple Residual MLP Framework." arXiv preprint arXiv:2202.07123 (2022).](https://arxiv.org/pdf/2202.07123.pdf)
