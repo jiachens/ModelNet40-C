@@ -1,3 +1,10 @@
+'''
+Description: 
+Autor: Jiachen Sun
+Date: 2022-02-16 22:23:16
+LastEditors: Jiachen Sun
+LastEditTime: 2022-02-24 23:01:16
+'''
 from __future__ import (
     division,
     absolute_import,
@@ -14,6 +21,6 @@ except NameError:
     __POINTNET2_SETUP__ = False
 
 if not __POINTNET2_SETUP__:
-    from pointnet2 import utils
-    from pointnet2 import data
-    from pointnet2 import models
+    from pointnet2_pyt.pointnet2 import utils
+    from pointnet2_pyt.pointnet2 import data
+    from pointnet2_pyt.pointnet2 import models
