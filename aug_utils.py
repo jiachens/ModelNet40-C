@@ -341,6 +341,7 @@ def pgd(data_batch,model, task, loss_name, dataset_name, step= 7, eps=0.05, alph
         out = model(**{'pc':adv_data})
         adv_data_batch['pc'] = adv_data
         adv_data_batch['label'] = data_batch['label']
+        model.zero_grad()
         loss = get_loss(task, loss_name, adv_data_batch, out, dataset_name)
         loss.backward()
         with torch.no_grad():
@@ -348,6 +349,6 @@ def pgd(data_batch,model, task, loss_name, dataset_name, step= 7, eps=0.05, alph
             delta = adv_data-data
             # print(delta)
             delta = torch.clamp(delta,-eps,eps)
-            adv_data = data+delta
+            adv_data = (data+delta).detach_()
     
     return adv_data_batch
