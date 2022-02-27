@@ -329,6 +329,7 @@ def rsmix(data, cfg, n_sample=512, KNN=False):
 
 
 def pgd(data_batch,model, task, loss_name, dataset_name, step= 7, eps=0.05, alpha=0.01):
+    model.eval()
     data = data_batch['pc']
     adv_data=data.clone()
     adv_data=adv_data+(torch.rand_like(adv_data)*eps*2-eps)

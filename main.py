@@ -280,6 +280,7 @@ def train(task, loader, model, optimizer, loss_name, dataset_name, cfg):
             data_batch = aug_utils.rsmix(data_batch,cfg)
         elif cfg.AUG.NAME == 'pgd':
             data_batch = aug_utils.pgd(data_batch,model, task, loss_name, dataset_name)
+            model.train()
         # print(data_batch)
         inp = get_inp(task, model, data_batch, loader.dataset.batch_proc, dataset_name)
         out = model(**inp)
