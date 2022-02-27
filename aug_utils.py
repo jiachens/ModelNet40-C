@@ -346,7 +346,7 @@ def pgd(data_batch,model, task, loss_name, dataset_name, step= 7, eps=0.05, alph
         with torch.no_grad():
             adv_data = adv_data + alpha * adv_data.grad.sign()
             delta = adv_data-data
-            print(delta)
+            # print(delta)
             delta = torch.clamp(delta,-eps,eps)
             adv_data = data+delta
     
