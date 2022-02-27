@@ -44,16 +44,16 @@ We allow users to directly download all pre-trained models with every data augme
 
 | **Architecture** | **Corruption Error Rate (%)** | **Clean Error Rate (%)** | **Checkpoint**                                                                                   | 
 |------------------|:-------------------------:|:--------------------:|--------------------------------------------------------------------------------------------------|
+| CurveNet       |            22.7           |          6.6         | checkpoint |
 | PointNet++       |            23.6           |          7.0         | [checkpoint](https://drive.google.com/file/d/18_297KJ8slsJq1rGDsvuQ29VICs-EJTa/view?usp=sharing) |
 | PCT              |            25.5           |          7.1         | [checkpoint](https://drive.google.com/file/d/1NFAhupQKn-sBLYW1YpUAf4jdqMpFcV7Z/view?usp=sharing) |
+| GDANet       |            25.6           |          7.5         | checkpoint |
 | DGCNN            |            25.9           |          7.4         | [checkpoint](https://drive.google.com/file/d/1JMCmujJM4J_OyxuZuDN4befFmtG1_p49/view?usp=sharing) |
 | RSCNN            |            26.2           |          7.7         | [checkpoint](https://drive.google.com/file/d/1RKhXKjZvKvZM2the2qqFhnytAX2H634U/view?usp=sharing) |
 | SimpleView       |            27.2           |          6.1         | [checkpoint](https://drive.google.com/file/d/1jscF5p3Q7DHWl-FgGGemQP3CeXITsTyY/view?usp=sharing) |
 | PointNet         |            28.3           |          9.3         | [checkpoint](https://drive.google.com/file/d/1eW26u0nm6HETwDSiCyCEoLLY3WnOVt73/view?usp=sharing) |
-| CurveNet       |            28.5           |          6.6         | checkpoint |
-| GDANet       |            30.8           |          7.5         | checkpoint |
-| PointMLP         |            36.2           |          6.3         | checkpoint |
-| PointMLP-Elite         |            38.5           |          7.2         | checkpoint |
+| PointMLP         |            31.9           |          6.3         | checkpoint |
+| PointMLP-Elite         |            32.4           |          7.2         | checkpoint |
 
 More models' results coming soon ......
 
@@ -213,3 +213,8 @@ Please cite our paper and SimpleView if you use our benchmark and analysis resul
 [11] [Goyal, Ankit, et al. "Revisiting Point Cloud Shape Classification with a Simple and Effective Baseline." arXiv preprint arXiv:2106.05304 (2021).](https://arxiv.org/pdf/2106.05304.pdf)
 
 [12] [Guo, Meng-Hao, et al. "Pct: Point cloud transformer." Computational Visual Media 7.2 (2021): 187-199.](https://link.springer.com/content/pdf/10.1007/s41095-021-0229-5.pdf)
+
+
+[13] [Xiang, Tiange, et al. "Walk in the cloud: Learning curves for point clouds shape analysis." Proceedings of the IEEE/CVF International Conference on Computer Vision. 2021.](https://arxiv.org/pdf/2105.01288.pdf)
+
+[14] [Ma, Xu, et al. "Rethinking Network Design and Local Geometry in Point Cloud: A Simple Residual MLP Framework." arXiv preprint arXiv:2202.07123 (2022).](https://arxiv.org/pdf/2202.07123.pdf)
