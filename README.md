@@ -218,3 +218,5 @@ Please cite our paper and SimpleView if you use our benchmark and analysis resul
 [13] [Xiang, Tiange, et al. "Walk in the cloud: Learning curves for point clouds shape analysis." Proceedings of the IEEE/CVF International Conference on Computer Vision. 2021.](https://arxiv.org/pdf/2105.01288.pdf)
 
 [14] [Ma, Xu, et al. "Rethinking Network Design and Local Geometry in Point Cloud: A Simple Residual MLP Framework." arXiv preprint arXiv:2202.07123 (2022).](https://arxiv.org/pdf/2202.07123.pdf)
+
+[15] [Learning Geometry-Disentangled Representation for Complementary Understanding of 3D Object Point Cloud.](https://arxiv.org/abs/2012.10921)
