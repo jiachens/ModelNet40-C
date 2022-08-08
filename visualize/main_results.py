@@ -544,7 +544,7 @@ def draw_test_adaptation():
 # Sets the font of matplotlib.
 update_font('xx-small')
 
-# Builds the cav data table once.
+# Builds the csv data table once.
 if not os.path.isfile(DATA_FILE):
     format_data()
 
