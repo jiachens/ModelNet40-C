@@ -144,6 +144,7 @@ class ModelNet40Dgcnn(Dataset):
         pc, label = self.dataset.__getitem__(idx)
         return {'pc': pc, 'label': label.item()}
 
+
 def load_data(data_path,corruption,severity):
 
     DATA_DIR = os.path.join(data_path, 'data_' + corruption + '_' +str(severity) + '.npy')

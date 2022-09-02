@@ -3,11 +3,14 @@ DATALOADER:
   num_workers: 0
 EXP:
   DATASET: modelnet40_c
-  EXP_ID: c_gdanet_run_1
+  EXP_ID: c_curvenet_run_1
   LOSS_NAME: smooth
   METRIC: acc
-  MODEL_NAME: gdanet
+  MODEL_NAME: curvenet
   SEED: 1
   TASK: cls
 TRAIN:
   l2: 1e-4
+ADAPT:
+  METHOD: tent
+  ITER: 10

@@ -11,3 +11,5 @@ EXP:
   TASK: cls
 TRAIN:
   l2: 1e-4
+ADAPT:
+  METHOD: bn

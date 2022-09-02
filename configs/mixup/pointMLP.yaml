@@ -2,12 +2,17 @@ DATALOADER:
   batch_size: 16
   num_workers: 0
 EXP:
-  DATASET: modelnet40_c
-  EXP_ID: c_gdanet_run_1
+  DATASET: modelnet40_dgcnn
+  EXP_ID: mixup_pointMLP_run_1
   LOSS_NAME: smooth
   METRIC: acc
-  MODEL_NAME: gdanet
+  MODEL_NAME: pointMLP
   SEED: 1
   TASK: cls
 TRAIN:
   l2: 1e-4
+AUG:
+  NAME: mixup
+  BETA: 1.
+  PROB: 0.5
+
