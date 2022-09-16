@@ -1,4 +1,4 @@
-git+git://github.com/imankgoyal/etw_pytorch_utils.git@v1.1.1#egg=etw_pytorch_utils
+git+https://github.com/imankgoyal/etw_pytorch_utils.git@v1.1.1#egg=etw_pytorch_utils
 enum34
 future
 h5py==2.10.0
