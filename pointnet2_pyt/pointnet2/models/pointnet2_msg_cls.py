@@ -135,7 +135,6 @@ class Pointnet2MSG(nn.Module):
                 be formated as (x, y, z, features...)
         """
         xyz, features = self._break_up_pc(pointcloud)
-
         for module in self.SA_modules:
             xyz, features = module(xyz, features)
 

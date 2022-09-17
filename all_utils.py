@@ -18,6 +18,7 @@ DATASET_NUM_CLASS = {
     'modelnet40_rscnn': 40,
     'modelnet40_pn2': 40,
     'modelnet40_dgcnn': 40,
+    'modelnet40_noise': 40,
 }
 
 class TensorboardManager:

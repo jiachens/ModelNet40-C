@@ -1,5 +1,16 @@
+'''
+Description: 
+Autor: Jiachen Sun
+Date: 2022-02-16 22:23:16
+LastEditors: Jiachen Sun
+LastEditTime: 2022-09-05 17:27:32
+'''
 import torch
 import torch.nn as nn
+
+def reset(model,model_state):
+    model.load_state_dict(model_state, strict=True)
+    return model
 
 def configure_model(model, eps, momentum, reset_stats, no_stats):
     """Configure model for adaptation by test-time normalization."""

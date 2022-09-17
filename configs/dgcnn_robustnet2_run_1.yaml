@@ -1,0 +1,14 @@
+DATALOADER:
+  batch_size: 48
+  num_workers: 0
+EXP:
+  DATASET: modelnet40_dgcnn
+  EXP_ID: dgcnn_robustnet2_run_1_2
+  LOSS_NAME: smooth
+  MODEL_NAME: robustnet2
+  SEED: 1
+  TASK: cls
+  # OPTIMIZER: pct
+TRAIN:
+  l2: 1e-4
+  learning_rate: 0.0001

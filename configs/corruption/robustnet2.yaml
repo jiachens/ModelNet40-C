@@ -3,14 +3,11 @@ DATALOADER:
   num_workers: 0
 EXP:
   DATASET: modelnet40_c
-  EXP_ID: c_pointnet2_run_1
+  EXP_ID: c_robustnet2_run_1
   LOSS_NAME: smooth
-  MODEL_NAME: pointnet2
+  METRIC: acc
+  MODEL_NAME: robustnet2
   SEED: 1
   TASK: cls
 TRAIN:
-  l2: 0.0
-ADAPT:
-  METHOD: tent
-  ITER: 10
-  RESET: True
+  l2: 1e-4

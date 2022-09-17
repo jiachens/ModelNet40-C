@@ -10,7 +10,7 @@ from rs_cnn.data.ModelNet40Loader import ModelNet40Cls as rscnn_ModelNet40Cls
 import PCT_Pytorch.pointnet2_ops_lib.pointnet2_ops.pointnet2_utils as pointnet2_utils
 from pointnet2_tf.modelnet_h5_dataset import ModelNetH5Dataset as pointnet2_ModelNetH5Dataset
 from dgcnn.pytorch.data import ModelNet40 as dgcnn_ModelNet40
-
+from dgcnn.pytorch.data import load_data as dgcnn_load_data
 
 # distilled from the following sources:
 # https://github.com/Yochengliu/Relation-Shape-CNN/blob/master/data/ModelNet40Loader.py
@@ -144,6 +144,29 @@ class ModelNet40Dgcnn(Dataset):
         pc, label = self.dataset.__getitem__(idx)
         return {'pc': pc, 'label': label.item()}
 
+class ModelNet40Noise(Dataset):
+    def __init__(self,  split, train_data_path,
+                 valid_data_path, test_data_path, num_points, noise_level):
+        self.noise_level = noise_level
+        self.split = split
+        self.data_path = {
+            "train": train_data_path,
+            "valid": valid_data_path,
+            "test":  test_data_path
+        }[self.split]
+        self.num_points = num_points
+        self.data, self.label = dgcnn_load_data(self.data_path)
+
+    def __getitem__(self, item):
+        pointcloud = self.data[item][:self.num_points]
+        if self.split == 'train':
+            pointcloud = pointcloud + np.random.randn(*pointcloud.shape).astype('float32') * self.noise_level
+        label = self.label[item]
+
+        return {'pc': pointcloud, 'label': label.item()}
+
+    def __len__(self):
+        return self.data.shape[0]
 
 def load_data(data_path,corruption,severity):
 
@@ -196,6 +219,9 @@ def create_dataloader(split, cfg):
     elif cfg.EXP.DATASET == "modelnet40_dgcnn":
         dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_DGCNN))
         dataset = ModelNet40Dgcnn(**dataset_args)
+    elif cfg.EXP.DATASET == "modelnet40_noise":
+        dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_Noise))
+        dataset = ModelNet40Noise(**dataset_args)
     elif cfg.EXP.DATASET == "modelnet40_c":
         dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_C))
         dataset = ModelNet40C(**dataset_args)

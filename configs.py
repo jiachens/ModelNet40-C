@@ -65,6 +65,15 @@ _C.DATALOADER.MODELNET40_DGCNN.valid_data_path = './data/modelnet40_ply_hdf5_204
 _C.DATALOADER.MODELNET40_DGCNN.test_data_path  = './data/modelnet40_ply_hdf5_2048/test_files.txt'
 _C.DATALOADER.MODELNET40_DGCNN.num_points      = 1024
 #-----------------------------------------------------------------------------
+# MODELNET40Noise
+#-----------------------------------------------------------------------------
+_C.DATALOADER.MODELNET40_Noise = CN()
+_C.DATALOADER.MODELNET40_Noise.train_data_path = './data/modelnet40_ply_hdf5_2048/train_files.txt'
+_C.DATALOADER.MODELNET40_Noise.valid_data_path = './data/modelnet40_ply_hdf5_2048/train_files.txt'
+_C.DATALOADER.MODELNET40_Noise.test_data_path  = './data/modelnet40_ply_hdf5_2048/test_files.txt'
+_C.DATALOADER.MODELNET40_Noise.num_points      = 1024
+_C.DATALOADER.MODELNET40_Noise.noise_level      = 0.12
+#-----------------------------------------------------------------------------
 # MODELNET40_C
 #-----------------------------------------------------------------------------
 _C.DATALOADER.MODELNET40_C = CN()
@@ -101,7 +110,7 @@ _C.AUG.MIXUPRATE = 0.4
 _C.ADAPT = CN()
 _C.ADAPT.METHOD = 'none'
 _C.ADAPT.ITER = 1
-
+_C.ADAPT.RESET = False
 
 def get_cfg_defaults():
   """Get a yacs CfgNode object with default values for my_project."""

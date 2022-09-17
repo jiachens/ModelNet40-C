@@ -1,7 +1,17 @@
+'''
+Description: 
+Autor: Jiachen Sun
+Date: 2022-02-16 22:23:16
+LastEditors: Jiachen Sun
+LastEditTime: 2022-09-05 17:27:14
+'''
 import torch
 import torch.nn as nn
 import torch.jit
 
+def reset(model,model_state):
+    model.load_state_dict(model_state, strict=True)
+    return model
 
 def collect_params(model):
     """Collect the affine scale + shift parameters from batch norms.

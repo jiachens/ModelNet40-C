@@ -21,21 +21,33 @@ import pprint
 from pointnet_pyt.pointnet.model import feature_transform_regularizer
 import sys
 import aug_utils
-from third_party import bn_helper, tent_helper
+from third_party import bn_helper, tent_helper, memo_helper
+from copy import deepcopy
+
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if DEVICE.type == 'cpu':
     print('WARNING: Using CPU')
 
-def adapt_bn(data,model,cfg):
+def copy_model(model):
+    """Copy the model and optimizer states for resetting after adaptation."""
+    model_state = deepcopy(model.state_dict())
+    # optimizer_state = deepcopy(optimizer.state_dict())
+    return model_state
+
+def adapt_bn(data,model,cfg,model_state):
+    if cfg.RESET:
+        model = tent_helper.reset(model,model_state)
     model = bn_helper.configure_model(model,eps=1e-5, momentum=0.1,reset_stats=False,no_stats=False)
     for _ in range(cfg.ITER):
         model(**data) 
-    print("Adaptation Done ...")
+    # print("Adaptation Done ...")
     model.eval()
     return model
 
-def adapt_tent(data,model,cfg):
+def adapt_tent(data,model,cfg,model_state):
+    if cfg.RESET:
+        model = tent_helper.reset(model,model_state)
     model = tent_helper.configure_model(model,eps=1e-5, momentum=0.1)
     parameter,_ = tent_helper.collect_params(model)
     optimizer_tent = torch.optim.SGD(parameter, lr=0.001,momentum=0.9)
@@ -43,10 +55,23 @@ def adapt_tent(data,model,cfg):
     for _ in range(cfg.ITER):
         # index = np.random.choice(args.number,args.batch_size,replace=False)
         tent_helper.forward_and_adapt(data,model,optimizer_tent)
-    print("Adaptation Done ...")
+    # print("Adaptation Done ...")
     model.eval()
     return model
 
+def adapt_memo(data,model,cfg,model_state):
+    if cfg.RESET:
+        model = tent_helper.reset(model,model_state)
+    model = memo_helper.configure_model(model,eps=1e-5, momentum=0.1)
+    parameter = memo_helper.collect_params(model)
+    optimizer_tent = torch.optim.SGD(parameter, lr=0.001,momentum=0.9)
+
+    for _ in range(cfg.ITER):
+        # index = np.random.choice(args.number,args.batch_size,replace=False)
+        memo_helper.forward_and_adapt(data,model,optimizer_tent)
+    # print("Adaptation Done ...")
+    model.eval()
+    return model
 
 def check_inp_fmt(task, data_batch, dataset_name):
     if task in ['cls', 'cls_trans']:
@@ -103,10 +128,10 @@ def get_inp(task, model, data_batch, batch_proc, dataset_name):
         data_batch = batch_proc(data_batch, DEVICE)
         check_inp_fmt(task, data_batch, dataset_name)
 
-    if isinstance(model, nn.DataParallel):
-        model_type = type(model.module)
-    else:
-        model_type = type(model)
+    # if isinstance(model, nn.DataParallel):
+    #     model_type = type(model.module)
+    # else:
+    #     model_type = type(model)
 
     if task in ['cls', 'cls_trans']:
         pc = data_batch['pc']
@@ -201,6 +226,10 @@ def get_loss(task, loss_name, data_batch, out, dataset_name):
 
 def validate(task, loader, model, dataset_name, adapt = None, confusion = False):
     model.eval()
+    if adapt.RESET:
+        model_state = copy_model(model)
+    else:
+        model_state = None
 
     def get_extra_param():
         return None
@@ -223,9 +252,9 @@ def validate(task, loader, model, dataset_name, adapt = None, confusion = False)
             time2 = time()
 
             if adapt.METHOD == 'bn':
-                model = adapt_bn(inp,model,adapt)
+                model = adapt_bn(inp,model,adapt,model_state)
             elif adapt.METHOD == 'tent':
-                model = adapt_tent(inp,model,adapt)
+                model = adapt_tent(inp,model,adapt,model_state)
 
             out = model(**inp)
 
@@ -414,6 +443,14 @@ def get_model(cfg):
             dataset=cfg.EXP.DATASET)
     elif cfg.EXP.MODEL_NAME == 'gdanet':
         model = models.GDANET(
+            task=cfg.EXP.TASK,
+            dataset=cfg.EXP.DATASET)
+    elif cfg.EXP.MODEL_NAME == 'robustnet':
+        model = models.RobustNet(
+            task=cfg.EXP.TASK,
+            dataset=cfg.EXP.DATASET)
+    elif cfg.EXP.MODEL_NAME == 'robustnet2':
+        model = models.RobustNet2(
             task=cfg.EXP.TASK,
             dataset=cfg.EXP.DATASET)
     else:

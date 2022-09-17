@@ -1,0 +1,9 @@
+Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.8873581847649918 Class Acc: 0.8428895348837209
+Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.7970016207455429 Class Acc: 0.7268546511627907
+Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.8715559157212318 Class Acc: 0.8117267441860466
+Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.8156401944894651 Class Acc: 0.7451046511627908
+Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.8905996758508914 Class Acc: 0.8378430232558138
+Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.8873581847649918 Class Acc: 0.8428895348837209
+Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.8715559157212318 Class Acc: 0.8117267441860466
+Model: pointnet2 Corruption: lidar Severity: 4 Acc: 0.49432739059967584 Class Acc: 0.4902209302325581
+Model: pointnet2 Corruption: lidar Severity: 4 Acc: 0.5105348460291734 Class Acc: 0.5266279069767442

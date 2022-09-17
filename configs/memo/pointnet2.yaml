@@ -1,5 +1,5 @@
 DATALOADER:
-  batch_size: 16
+  batch_size: 1
   num_workers: 0
 EXP:
   DATASET: modelnet40_c
@@ -10,7 +10,3 @@ EXP:
   TASK: cls
 TRAIN:
   l2: 0.0
-ADAPT:
-  METHOD: tent
-  ITER: 10
-  RESET: True
