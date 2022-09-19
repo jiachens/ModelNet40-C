@@ -3,7 +3,7 @@ Description:
 Autor: Jiachen Sun
 Date: 2022-02-17 20:37:07
 LastEditors: Jiachen Sun
-LastEditTime: 2022-09-15 23:44:42
+LastEditTime: 2022-09-17 18:09:31
 '''
 import torch.nn as nn
 import torch.nn.functional as F
@@ -50,17 +50,17 @@ class RobustNet_OG(nn.Module):
 
         assert setting in curve_config
 
-        additional_channel = 32
-        self.lpfa = LPFA(9, additional_channel, k=k, mlp_num=1, initial=True)
+        # additional_channel = 32
+        # self.lpfa = LPFA(9, additional_channel, k=k, mlp_num=1, initial=True)
 
         self.pointnet2_module = PointnetSAModuleMSG(
                         npoint=512,
-                        radii=[0.1, 0.2],
-                        nsamples=[16, 32],
+                        radii=[0.1, 0.2, 0.4],
+                        nsamples=[16, 32, 128],
                         mlps=[
-                            [additional_channel, 32, 32, 64],
-                            [additional_channel, 64, 64, 128],
-                            # [additional_channel, 64, 96, 128],
+                            [3, 32, 32, 64],
+                            [3, 64, 64, 128],
+                            [3, 64, 96, 128],
                         ],
                         use_xyz=True,
                     )
@@ -72,7 +72,7 @@ class RobustNet_OG(nn.Module):
         # self.cic2 = CIC(npoint=512,radius=0.15, k=k,  in_channels=320, output_channels=128, bottleneck_ratio=2, mlp_num=1, curve_config=curve_config[setting][1])
         # self.cic22 = CIC(npoint=512,radius=0.3, k=k,  in_channels=128, output_channels=128, bottleneck_ratio=4, mlp_num=1, curve_config=curve_config[setting][1])
         
-        self.cic3 = CIC(npoint=256,radius=0.2, k=k,  in_channels=192, output_channels=256, bottleneck_ratio=2, mlp_num=1, curve_config=curve_config[setting][2])
+        self.cic3 = CIC(npoint=256,radius=0.2, k=k,  in_channels=320, output_channels=256, bottleneck_ratio=2, mlp_num=1, curve_config=curve_config[setting][2])
         self.cic32 = CIC(npoint=256,radius=0.4, k=k,  in_channels=256, output_channels=256, bottleneck_ratio=4, mlp_num=1, curve_config=curve_config[setting][2])
 
 
@@ -94,9 +94,9 @@ class RobustNet_OG(nn.Module):
     def forward(self, xyz):
         batch_size, _, _ = xyz.size()
 
-        l0_points = self.lpfa(xyz, xyz)
+        # l0_points = self.lpfa(xyz, xyz)
         # print(xyz.shape)
-        xyz, l1_points = self.pointnet2_module(xyz.transpose(1, 2).contiguous(), l0_points)
+        xyz, l1_points = self.pointnet2_module(xyz.transpose(1, 2).contiguous(), xyz)
 
         # l1_xyz, l1_points = self.cic1(xyz, l0_points)
         # l1_xyz, l1_points = self.cic12(l1_xyz, l1_points)

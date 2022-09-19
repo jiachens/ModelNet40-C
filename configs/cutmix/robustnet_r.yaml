@@ -1,9 +1,9 @@
 DATALOADER:
-  batch_size: 48
+  batch_size: 40
   num_workers: 0
 EXP:
   DATASET: modelnet40_dgcnn
-  EXP_ID: cutmix_r_robustnet_run_1_2
+  EXP_ID: cutmix_r_robustnet_run_1
   LOSS_NAME: smooth
   MODEL_NAME: robustnet
   SEED: 1
