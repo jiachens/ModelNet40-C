@@ -1,10 +1,3 @@
-###
- # @Description: 
- # @Autor: Jiachen Sun
- # @Date: 2022-02-16 22:23:16
- # @LastEditors: Jiachen Sun
- # @LastEditTime: 2022-02-17 13:09:42
-### 
 wgetgdrive(){
 
   # $1 = file ID

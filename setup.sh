@@ -1,10 +1,3 @@
-###
- # @Description: 
- # @Autor: Jiachen Sun
- # @Date: 2022-02-23 17:25:05
- # @LastEditors: Jiachen Sun
- # @LastEditTime: 2022-02-24 23:20:04
-### 
 set -e
 PYTHON_BIN=${PYTHON_BIN:-python}
 

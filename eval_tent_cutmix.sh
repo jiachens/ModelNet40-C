@@ -1,11 +1,3 @@
-
-###
- # @Description: 
- # @Autor: Jiachen Sun
- # @Date: 2022-02-16 22:23:16
- # @LastEditors: Jiachen Sun
- # @LastEditTime: 2022-05-28 10:21:37
-### 
 if [ ! -d "output" ]; then
     mkdir "output"
 fi

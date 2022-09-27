@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2022-02-17 20:37:07
-LastEditors: Jiachen Sun
-LastEditTime: 2022-02-17 20:42:20
-'''
 import torch.nn as nn
 import torch.nn.functional as F
 from CurveNet.core.models.curvenet_cls import CurveNet as CurveNet_og

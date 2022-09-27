@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2022-02-16 22:23:16
-LastEditors: Jiachen Sun
-LastEditTime: 2022-02-24 22:36:59
-'''
 import torch
 import torch.nn as nn
 from pointnet2_pyt.pointnet2.models.pointnet2_msg_cls import Pointnet2MSG

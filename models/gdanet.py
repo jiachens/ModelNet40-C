@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2022-02-22 23:22:17
-LastEditors: Jiachen Sun
-LastEditTime: 2022-02-23 00:16:25
-'''
 import torch
 import torch.nn as nn
 from GDANet.model.GDANet_cls import GDANET as GDANET_og

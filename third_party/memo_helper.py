@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2022-09-03 18:07:28
-LastEditors: Jiachen Sun
-LastEditTime: 2022-09-05 18:44:25
-'''
 import torch
 import torch.nn as nn
 import torch.jit

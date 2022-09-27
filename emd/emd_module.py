@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2022-02-16 22:23:16
-LastEditors: Jiachen Sun
-LastEditTime: 2022-09-16 02:18:18
-'''
 # EMD approximation module (based on auction algorithm)
 # memory complexity: O(n)
 # time complexity: O(n^2 * iter) 

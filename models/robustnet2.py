@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2022-02-17 20:37:07
-LastEditors: Jiachen Sun
-LastEditTime: 2022-09-12 14:21:19
-'''
 import torch.nn as nn
 import torch.nn.functional as F
 from all_utils import DATASET_NUM_CLASS

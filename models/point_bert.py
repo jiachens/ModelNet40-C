@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2022-04-20 15:07:27
-LastEditors: Jiachen Sun
-LastEditTime: 2022-04-20 15:54:56
-'''
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

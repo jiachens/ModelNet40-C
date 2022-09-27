@@ -1,10 +1,3 @@
-'''
-Description: 
-Autor: Jiachen Sun
-Date: 2022-02-21 21:16:25
-LastEditors: Jiachen Sun
-LastEditTime: 2022-02-21 21:17:57
-'''
 import torch.nn as nn
 from pointMLP.classification_ModelNet40.models.pointmlp import pointMLPElite as pointMLP_original
 from all_utils import DATASET_NUM_CLASS
