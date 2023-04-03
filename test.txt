@@ -7,3 +7,4 @@ Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.8873581847649918 Cla
 Model: pointnet2 Corruption: density_inc Severity: 4 Acc: 0.8715559157212318 Class Acc: 0.8117267441860466
 Model: pointnet2 Corruption: lidar Severity: 4 Acc: 0.49432739059967584 Class Acc: 0.4902209302325581
 Model: pointnet2 Corruption: lidar Severity: 4 Acc: 0.5105348460291734 Class Acc: 0.5266279069767442
+Model: pointMLP Corruption: uniform Severity: 1 Acc: 0.720421393841167 Class Acc: 0.6841860465116281
