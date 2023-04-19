@@ -1,3 +1,6 @@
 [submodule "PyGeM"]
 	path = PyGeM
 	url = https://github.com/mathLab/PyGeM.git
+[submodule "visualize/mitsuba2"]
+	path = visualize/mitsuba2
+	url = https://github.com/mitsuba-renderer/mitsuba2
