@@ -551,6 +551,9 @@ def entry_train(cfg, resume=False, model_path=""):
 def entry_test(cfg, test_or_valid, model_path="", confusion = False):
     split = "test" if test_or_valid else "valid"
     loader_test = create_dataloader(split=split, cfg=cfg)
+    
+    print("-----------------------Testing--------------------------")
+    print(type(loader_test))
 
     model = get_model(cfg)
     model.to(DEVICE)

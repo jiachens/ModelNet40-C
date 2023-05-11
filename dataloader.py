@@ -10,6 +10,7 @@ from rs_cnn.data.ModelNet40Loader import ModelNet40Cls as rscnn_ModelNet40Cls
 import PCT_Pytorch.pointnet2_ops_lib.pointnet2_ops.pointnet2_utils as pointnet2_utils
 from pointnet2_tf.modelnet_h5_dataset import ModelNetH5Dataset as pointnet2_ModelNetH5Dataset
 from dgcnn.pytorch.data import ModelNet40 as dgcnn_ModelNet40
+from Coreset import CoresetSelection
 
 
 # distilled from the following sources:
@@ -144,8 +145,8 @@ class ModelNet40Dgcnn(Dataset):
         pc, label = self.dataset.__getitem__(idx)
         return {'pc': pc, 'label': label.item()}
 
-def load_data(data_path,corruption,severity):
 
+def load_data(data_path,corruption,severity):
     DATA_DIR = os.path.join(data_path, 'data_' + corruption + '_' +str(severity) + '.npy')
     # if corruption in ['occlusion']:
     #     LABEL_DIR = os.path.join(data_path, 'label_occlusion.npy')
@@ -153,6 +154,7 @@ def load_data(data_path,corruption,severity):
     all_data = np.load(DATA_DIR)
     all_label = np.load(LABEL_DIR)
     return all_data, all_label
+
 
 class ModelNet40C(Dataset):
     def __init__(self, split, test_data_path,corruption,severity):
@@ -177,11 +179,11 @@ class ModelNet40C(Dataset):
         return self.data.shape[0]
 
 
-def create_dataloader(split, cfg):
+def create_dataloader(split, cfg, coreset_method="random", pruning_rate=0.5):
     num_workers = cfg.DATALOADER.num_workers
     batch_size = cfg.DATALOADER.batch_size
     dataset_args = {
-        "split": split
+        "split": split,
     }
 
     if cfg.EXP.DATASET == "modelnet40_rscnn":
@@ -195,6 +197,17 @@ def create_dataloader(split, cfg):
     elif cfg.EXP.DATASET == "modelnet40_dgcnn":
         dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_DGCNN))
         dataset = ModelNet40Dgcnn(**dataset_args)
+        if split == "train" and coreset_method is not None:
+            # print(type(dataset.dataset.data), dataset.dataset.data.shape, dataset.dataset.label.shape)
+            # total = dataset.dataset.label.shape[0]
+            # # select coreset
+            # if coreset_method == "random":
+            #     # random sampling
+            #     selected_indices = CoresetSelection.random_selection(total, int(total*pruning_rate))
+            #     dataset.dataset.data = dataset.dataset.data[selected_indices]
+            #     dataset.dataset.label = dataset.dataset.label[selected_indices]
+            coreset_selection(dataset, coreset_method, pruning_rate)
+            print("after coreset selection", dataset.dataset.data.shape, dataset.dataset.label.shape)
     elif cfg.EXP.DATASET == "modelnet40_c":
         dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_C))
         dataset = ModelNet40C(**dataset_args)
@@ -213,3 +226,12 @@ def create_dataloader(split, cfg):
         pin_memory=(torch.cuda.is_available()) and (not num_workers)
     )
 
+
+def coreset_selection(dataset, coreset_method=None, pruning_rate=0.5):
+    total = dataset.dataset.label.shape[0]
+    if coreset_method == "random":
+        # random sampling
+        selected_indices = CoresetSelection.random_selection(total, int(total*pruning_rate))
+        dataset.dataset.data = dataset.dataset.data[selected_indices]
+        dataset.dataset.label = dataset.dataset.label[selected_indices]
+    ## TODO: implement other selection methods
