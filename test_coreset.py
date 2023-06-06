@@ -479,128 +479,13 @@ def get_optimizer(optim_name, tr_arg, model):
 
 def entry_train(cfg, resume=False, model_path="", pruning_rate=0.5, coreset_method="random"):
     loader_train = create_dataloader(split='train', cfg=cfg, pruning_rate=pruning_rate, coreset_method=coreset_method)
-    loader_valid = create_dataloader(split='valid', cfg=cfg)
-    loader_test  = create_dataloader(split='test',  cfg=cfg)
-
-    model = get_model(cfg)
-    model.to(DEVICE)
-    print(model)
-    if torch.cuda.device_count() > 1:
-        model = nn.DataParallel(model)
-
-    optimizer, lr_sched, bnm_sched = get_optimizer(cfg.EXP.OPTIMIZER, cfg.TRAIN, model)
-
-    if resume:
-        model = load_model_opt_sched(model, optimizer, lr_sched, bnm_sched, model_path)
-    else:
-        assert model_path == ""
-
-
-    log_dir = f"./runs/{cfg.EXP.EXP_ID}"
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
-    tb = TensorboardManager(log_dir)
-    track_train = TrackTrain(early_stop_patience=cfg.TRAIN.early_stop)
-    TD_logger = TrainingDynamicsLogger()
-
-    # cfg.TRAIN.num_epochs = 100
-    # print("NUM EPOCH:", cfg.TRAIN.num_epochs)
-    # TODO: fix the hardcoding here
-    for epoch in range(100):
-    # for epoch in range(cfg.TRAIN.num_epochs):
-        print(f'Epoch {epoch}')
-
-        print('Training..')
-        train_perf, train_loss = train(cfg.EXP.TASK, loader_train, model, optimizer, cfg.EXP.LOSS_NAME, cfg.EXP.DATASET, cfg, TD_logger=TD_logger, epoch=epoch)
-        pprint.pprint(train_perf, width=80)
-        tb.update('train', epoch, train_perf)
-
-        if (not cfg.EXP_EXTRA.no_val) and epoch % cfg.EXP_EXTRA.val_eval_freq == 0:
-                print('\nValidating..')
-                val_perf = validate(cfg.EXP.TASK, loader_valid, model, cfg.EXP.DATASET, cfg.ADAPT)
-                pprint.pprint(val_perf, width=80)
-                tb.update('val', epoch, val_perf)
-        else:
-            val_perf = defaultdict(float)
-
-        if (not cfg.EXP_EXTRA.no_test) and (epoch % cfg.EXP_EXTRA.test_eval_freq == 0):
-            print('\nTesting..')
-            test_perf = validate(cfg.EXP.TASK, loader_test, model, cfg.EXP.DATASET, cfg.ADAPT)
-            pprint.pprint(test_perf, width=80)
-            tb.update('test', epoch, test_perf)
-        else:
-            test_perf = defaultdict(float)
-
-        track_train.record_epoch(
-            epoch_id=epoch,
-            train_metric=get_metric_from_perf(cfg.EXP.TASK, train_perf, cfg.EXP.METRIC),
-            val_metric=get_metric_from_perf(cfg.EXP.TASK, val_perf, cfg.EXP.METRIC),
-            test_metric=get_metric_from_perf(cfg.EXP.TASK, test_perf, cfg.EXP.METRIC))
-
-        if (not cfg.EXP_EXTRA.no_val) and track_train.save_model(epoch_id=epoch, split='val'):
-            print('Saving best model on the validation set')
-            save_checkpoint('best_val', epoch, model, optimizer,  lr_sched, bnm_sched, test_perf, cfg)
-
-        if (not cfg.EXP_EXTRA.no_test) and track_train.save_model(epoch_id=epoch, split='test'):
-            print('Saving best model on the test set')
-            save_checkpoint('best_test', epoch, model, optimizer,  lr_sched, bnm_sched, test_perf, cfg)
-
-        if (not cfg.EXP_EXTRA.no_val) and track_train.early_stop(epoch_id=epoch):
-            print(f"Early stopping at {epoch} as val acc did not improve for {cfg.TRAIN.early_stop} epochs.")
-            break
-
-        if (not (cfg.EXP_EXTRA.save_ckp == 0)) and (epoch % cfg.EXP_EXTRA.save_ckp == 0):
-            save_checkpoint(f'{epoch}', epoch, model, optimizer,  lr_sched, bnm_sched, test_perf, cfg)
-
-        if cfg.EXP.OPTIMIZER == 'vanilla':
-            assert bnm_sched is None
-            lr_sched.step(train_loss)
-        else:
-            lr_sched.step()
-
-    print('Saving the final model')
-    save_checkpoint('final', epoch, model, optimizer,  lr_sched, bnm_sched, test_perf, cfg)
-
-    save_dir = f"./runs/{cfg.EXP.EXP_ID}/"
-    td_path = os.path.join(save_dir, f'td.pickle')
-    print("Saving training dynamics to", td_path, "...")
-    TD_logger.save_training_dynamics(td_path)
     
-    print('\nTesting on the final model..')
-    last_test_perf = validate(cfg.EXP.TASK, loader_test, model, cfg.EXP.DATASET, cfg.ADAPT)
-    pprint.pprint(last_test_perf, width=80)
-
-    tb.close()
-
 
 def entry_test(cfg, test_or_valid, model_path="", confusion = False):
     split = "test" if test_or_valid else "valid"
     loader_test = create_dataloader(split=split, cfg=cfg)
     
-    print("-----------------------Testing--------------------------")
-    print(type(loader_test))
-
-    model = get_model(cfg)
-    model.to(DEVICE)
-    print(model)
-    if torch.cuda.device_count() > 1:
-        model = nn.DataParallel(model)
-
-    optimizer, lr_sched, bnm_sched = get_optimizer(cfg.EXP.OPTIMIZER, cfg.TRAIN, model)
-    model = load_model_opt_sched(model, optimizer, lr_sched, bnm_sched, model_path)
-    model.eval()
-    if confusion:
-        test_perf, pred, ground = validate(cfg.EXP.TASK, loader_test, model, cfg.EXP.DATASET, cfg.ADAPT, confusion)
-        print(pred.shape, ground.shape)
-        #### some hardcoding #######
-        np.save('./output/' + cfg.EXP.MODEL_NAME + '_' +  cfg.DATALOADER.MODELNET40_C.corruption + '_' + str(cfg.DATALOADER.MODELNET40_C.severity)  + '_pred.npy',pred )
-        np.save('./output/' + cfg.EXP.MODEL_NAME + '_' +  cfg.DATALOADER.MODELNET40_C.corruption + '_' + str(cfg.DATALOADER.MODELNET40_C.severity)  + '_ground.npy',ground)
-        #### #### #### #### #### ####
-    else:
-        test_perf = validate(cfg.EXP.TASK, loader_test, model, cfg.EXP.DATASET, cfg.ADAPT, confusion)
-    print("Model: {} Corruption: {} Severity: {} Acc: {} Class Acc: {}".format(cfg.EXP.MODEL_NAME, cfg.DATALOADER.MODELNET40_C.corruption, cfg.DATALOADER.MODELNET40_C.severity,test_perf['acc'],test_perf['class_acc']),file=file_object,flush=True)
-    pprint.pprint(test_perf, width=80)
-    return test_perf
+   
 
 
 def rscnn_vote_evaluation(cfg, model_path, log_file):

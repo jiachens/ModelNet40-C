@@ -3,7 +3,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 import os
-
+import pickle
 from pc_utils import (rotate_point_cloud, PointcloudScaleAndTranslate)
 import rs_cnn.data.data_utils as rscnn_d_utils
 from rs_cnn.data.ModelNet40Loader import ModelNet40Cls as rscnn_ModelNet40Cls
@@ -46,7 +46,7 @@ class ModelNet40Rscnn(Dataset):
         point = np.array(point)
         label = label[0].item()
 
-        return {'pc': point, 'label': label}
+        return {'pc': point, 'label': label, 'idx': idx}
 
     def batch_proc(self, data_batch, device):
         point = data_batch['pc'].to(device)
@@ -143,7 +143,7 @@ class ModelNet40Dgcnn(Dataset):
 
     def __getitem__(self, idx):
         pc, label = self.dataset.__getitem__(idx)
-        return {'pc': pc, 'label': label.item()}
+        return {'pc': pc, 'label': label.item(), 'idx': idx}
 
 
 def load_data(data_path,corruption,severity):
@@ -186,6 +186,7 @@ def create_dataloader(split, cfg, coreset_method="random", pruning_rate=0.5):
         "split": split,
     }
 
+    # print(cfg.EXP.DATASET)
     if cfg.EXP.DATASET == "modelnet40_rscnn":
         dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_RSCNN))
         # augmentation directly done in the code so that
@@ -198,16 +199,8 @@ def create_dataloader(split, cfg, coreset_method="random", pruning_rate=0.5):
         dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_DGCNN))
         dataset = ModelNet40Dgcnn(**dataset_args)
         if split == "train" and coreset_method is not None:
-            # print(type(dataset.dataset.data), dataset.dataset.data.shape, dataset.dataset.label.shape)
-            # total = dataset.dataset.label.shape[0]
-            # # select coreset
-            # if coreset_method == "random":
-            #     # random sampling
-            #     selected_indices = CoresetSelection.random_selection(total, int(total*pruning_rate))
-            #     dataset.dataset.data = dataset.dataset.data[selected_indices]
-            #     dataset.dataset.label = dataset.dataset.label[selected_indices]
             coreset_selection(dataset, coreset_method, pruning_rate)
-            print("after coreset selection", dataset.dataset.data.shape, dataset.dataset.label.shape)
+            print("after coreset selection", dataset.dataset.data.shape, dataset.dataset.label.shape)            
     elif cfg.EXP.DATASET == "modelnet40_c":
         dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_C))
         dataset = ModelNet40C(**dataset_args)
@@ -217,6 +210,7 @@ def create_dataloader(split, cfg, coreset_method="random", pruning_rate=0.5):
     if "batch_proc" not in dir(dataset):
         dataset.batch_proc = None
 
+    # print("batch size", batch_size)
     return DataLoader(
         dataset,
         batch_size,
@@ -227,11 +221,69 @@ def create_dataloader(split, cfg, coreset_method="random", pruning_rate=0.5):
     )
 
 
-def coreset_selection(dataset, coreset_method=None, pruning_rate=0.5):
+def get_dataset(split, cfg, coreset_method="random", pruning_rate=0.5):
+    num_workers = cfg.DATALOADER.num_workers
+    batch_size = cfg.DATALOADER.batch_size
+    dataset_args = {
+        "split": split,
+    }
+
+    # print(cfg.EXP.DATASET)
+    if cfg.EXP.DATASET == "modelnet40_rscnn":
+        dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_RSCNN))
+        # augmentation directly done in the code so that
+        # it is as similar to the vanilla code as possible
+        dataset = ModelNet40Rscnn(**dataset_args)
+    elif cfg.EXP.DATASET == "modelnet40_pn2":
+        dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_PN2))
+        dataset = ModelNet40PN2(**dataset_args)
+    elif cfg.EXP.DATASET == "modelnet40_dgcnn":
+        dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_DGCNN))
+        dataset = ModelNet40Dgcnn(**dataset_args)
+        if split == "train" and coreset_method is not None:
+            coreset_selection(dataset, coreset_method, pruning_rate)
+            print("after coreset selection", dataset.dataset.data.shape, dataset.dataset.label.shape)            
+    elif cfg.EXP.DATASET == "modelnet40_c":
+        dataset_args.update(dict(**cfg.DATALOADER.MODELNET40_C))
+        dataset = ModelNet40C(**dataset_args)
+    else:
+        assert False
+
+    if "batch_proc" not in dir(dataset):
+        dataset.batch_proc = None
+
+    # print("batch size", batch_size)
+    return dataset
+
+
+def coreset_selection(dataset, coreset_method=None, pruning_rate=0.5, data_score=None):
     total = dataset.dataset.label.shape[0]
     if coreset_method == "random":
         # random sampling
         selected_indices = CoresetSelection.random_selection(total, int(total*pruning_rate))
+        dataset.dataset.data = dataset.dataset.data[selected_indices]
+        dataset.dataset.label = dataset.dataset.label[selected_indices]
+    elif coreset_method == "selective":
+        # only select x for each dataset
+        selection_number = int(pruning_rate * 10)
+        print("selection number", pruning_rate)
+        classes = np.unique(dataset.dataset.label)
+        # print("unique labels", classes)
+        selected_indices = []
+        for c in classes:
+            class_indices = np.where(dataset.dataset.label == c)[0]
+            random_indices = torch.randperm(len(class_indices))
+            selected_indices.append(random_indices[:int(selection_number)].numpy())
+        selected_indices = np.array(selected_indices).flatten()
+        # print(selected_indices)
+        dataset.dataset.data = dataset.dataset.data[selected_indices]
+        dataset.dataset.label = dataset.dataset.label[selected_indices]
+    elif coreset_method == "forgetting":
+        if data_score is None:
+            with open('./run_back/pgd_dgcnn_run_1/data-score-run_back/pgd_dgcnn_run_1.pickle', 'rb') as f:
+                data_score = pickle.load(f)
+        assert data_score is not None
+        selected_indices = CoresetSelection.score_monotonic_selection(data_score, coreset_method, pruning_rate, descending=True)
         dataset.dataset.data = dataset.dataset.data[selected_indices]
         dataset.dataset.label = dataset.dataset.label[selected_indices]
     ## TODO: implement other selection methods
