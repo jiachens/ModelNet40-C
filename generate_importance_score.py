@@ -107,18 +107,21 @@ def training_dynamics_metrics(td_log, dataset, data_importance, targets):
         data_importance['accumulated_margin'][index] += margin
     
     for i, item in enumerate(td_log):
-        if i % 100 == 0:
+        if i % 10000 == 0:
             print(i)
         record_training_dynamics(item)
 
 
 """Calculate td metrics"""
-def EL2N(td_log, dataset, data_importance, max_epoch=10):
-    targets = []
-    data_size = len(dataset)
+def EL2N(td_log, dataset, data_importance, targets, max_epoch=10):
+    # targets = []
+    indices = []
+    data_size = len(targets)
 
-    for i in range(data_size):
-        pass
+    for i in range(len(dataset)):
+        _, y, idxes = dataset[i]
+        # targets.append(y.numpy())
+        indices.append(idxes)
     targets = torch.tensor(targets)
     data_importance['targets'] = targets.type(torch.int32)
     data_importance['el2n'] = torch.zeros(data_size).type(torch.float32)
@@ -126,15 +129,19 @@ def EL2N(td_log, dataset, data_importance, max_epoch=10):
 
     def record_training_dynamics(td_log):
         output = td_log['output']
-        index = td_log['iterarion'].type(torch.long)
+        output = output.to('cpu')
+        # index = td_log['iterarion'].type(torch.long)
+        index = indices[td_log['iterarion']]
 
         label = targets[index]
         label_onehot = torch.nn.functional.one_hot(label, num_classes=num_classes)
-        el2n_score = torch.sqrt(l2_loss(label_onehot,output).sum(dim=1))
+        label_onehot = np.squeeze(label_onehot)
+        # print(label_onehot.shape, output.shape)
+        el2n_score = torch.sqrt(l2_loss(label_onehot, output).sum(dim=1))
         data_importance['el2n'][index] += el2n_score
 
     for i, item in enumerate(td_log):
-        if i % 100 == 0:
+        if i % 10000 == 0:
             print(i)
         
         if item['epoch'] == max_epoch:
@@ -159,7 +166,7 @@ loader_train = create_dataloader(split='train', cfg=cfg, coreset_method=None)
 
 index_dataset = []
 for i, data_batch in enumerate(loader_train):
-    print(data_batch.keys(), data_batch['idx'])
+    # print(data_batch.keys(), data_batch['idx'])
     index_dataset.append((data_batch['pc'], data_batch['label'], data_batch['idx']))
 
 
@@ -172,12 +179,15 @@ data_importance = {}
 
 with open(td_path, 'rb') as f:
     pickled_data = pickle.load(f)
-    print(pickled_data['training_dynamics'][0])
+    # print(pickled_data['training_dynamics'][0])
 
 
 training_dynamics = pickled_data['training_dynamics']
 
 training_dynamics_metrics(training_dynamics, index_dataset, data_importance, dataset_all.dataset.label)
+
+# EL2N
+EL2N(training_dynamics, index_dataset, data_importance, dataset_all.dataset.label, max_epoch=10)
 
 print(f'Saving data score at {data_score_path}')
 with open(data_score_path, 'wb') as handle:

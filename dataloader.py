@@ -278,12 +278,13 @@ def coreset_selection(dataset, coreset_method=None, pruning_rate=0.5, data_score
         # print(selected_indices)
         dataset.dataset.data = dataset.dataset.data[selected_indices]
         dataset.dataset.label = dataset.dataset.label[selected_indices]
-    elif coreset_method == "forgetting":
+    elif coreset_method == "forgetting" or coreset_method == "el2n" or coreset_method == 'accumulated_margin':
         if data_score is None:
             with open('./run_back/pgd_dgcnn_run_1/data-score-run_back/pgd_dgcnn_run_1.pickle', 'rb') as f:
                 data_score = pickle.load(f)
         assert data_score is not None
-        selected_indices = CoresetSelection.score_monotonic_selection(data_score, coreset_method, pruning_rate, descending=True)
+        selected_indices = CoresetSelection.score_monotonic_selection(data_score, coreset_method, pruning_rate, descending=True, class_balanced=False)
+        print("using coreset method", coreset_method)
         dataset.dataset.data = dataset.dataset.data[selected_indices]
         dataset.dataset.label = dataset.dataset.label[selected_indices]
     ## TODO: implement other selection methods

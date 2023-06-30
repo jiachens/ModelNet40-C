@@ -20,16 +20,23 @@ class CoresetSelection(object):
             #Permutation
             targets_list = data_score['targets'][score_sorted_index]
             targets_unique = torch.unique(targets_list)
+            # print(targets_unique)
+
+            target_nums = []
             for target in targets_unique:
                 target_index_mask = (targets_list == target)
                 targets_num = target_index_mask.sum()
+                target_nums.append(targets_num)
+                # print("target, target_num", target, targets_num)
+            
 
+            # print("targets num", targets_num)
             #Guarantee the class ratio doesn't change
             selected_index = []
-            for target in targets_unique:
-                target_index_mask = (targets_list == target)
+            for i, target in enumerate(targets_unique):
+                target_index_mask = torch.flatten((targets_list == target))
                 target_index = all_index[target_index_mask]
-                target_coreset_num = targets_num * ratio
+                target_coreset_num = target_nums[i] * ratio
                 selected_index = selected_index + list(target_index[:int(target_coreset_num)])
             selected_index = torch.tensor(selected_index)
             print(f'High priority {key}: {score[score_sorted_index[selected_index][:15]]}')

@@ -24,6 +24,8 @@ import aug_utils
 from third_party import bn_helper, tent_helper
 from TrainingLogger import TrainingDynamicsLogger
 
+os.environ["CUDA_VISIBLE_DEVICES"]="3"
+
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if DEVICE.type == 'cpu':
     print('WARNING: Using CPU')
@@ -505,9 +507,9 @@ def entry_train(cfg, resume=False, model_path="", pruning_rate=0.5, coreset_meth
 
     # cfg.TRAIN.num_epochs = 100
     # print("NUM EPOCH:", cfg.TRAIN.num_epochs)
-    # TODO: fix the hardcoding here
-    for epoch in range(100):
-    # for epoch in range(cfg.TRAIN.num_epochs):
+
+    # for epoch in range(100):
+    for epoch in range(cfg.TRAIN.num_epochs):
         print(f'Epoch {epoch}')
 
         print('Training..')
